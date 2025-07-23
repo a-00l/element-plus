@@ -22,7 +22,7 @@
   const props = defineProps<IconProps>()
   const styleCss = computed(() => {
     return {
-      fontSize: props.size || '1rem',
+      fontSize: props.size || '1em',
     }
   })
 </script>
