@@ -40,11 +40,13 @@ export default defineConfig({
         ]
       },
       {
-        text: 'button',
+        text: 'Button',
         items: [
-          { text: 'button', link: './components/button' }
+          { text: 'Button', link: '/components/Button' },
+          { text: 'Icon', link: '/components/Icon' }
+
         ]
-      }
+      },
     ],
 
     socialLinks: [
