@@ -1,9 +1,101 @@
 <template>
-  <div>
-    <my-button>默认按钮</my-button>
+  <div class="mb-4">
+    <Button>Default</Button>
+    <Button type="primary"> Primary</Button>
+    <Button type="success">Success</Button>
+    <Button type="info">Info</Button>
+    <Button type="warning">Warning</Button>
+    <Button type="danger">Danger</Button>
+  </div>
+  <div class="mb-4">
+    <Button plain>Default</Button>
+    <Button
+      plain
+      type="primary"
+    >
+      Primary</Button
+    >
+    <Button
+      plain
+      type="success"
+      >Success</Button
+    >
+    <Button
+      plain
+      type="info"
+      >Info</Button
+    >
+    <Button
+      plain
+      type="warning"
+      >Warning</Button
+    >
+    <Button
+      plain
+      type="danger"
+      >Danger</Button
+    >
+  </div>
+  <div class="mb-4">
+    <Button>Default</Button>
+    <Button
+      round
+      type="primary"
+    >
+      Primary</Button
+    >
+    <Button
+      round
+      type="success"
+      >Success</Button
+    >
+    <Button
+      round
+      type="info"
+      >Info</Button
+    >
+    <Button
+      round
+      type="warning"
+      >Warning</Button
+    >
+    <Button
+      round
+      type="danger"
+      >Danger</Button
+    >
+  </div>
+  <div class="mb-4">
+    <Button
+      circle
+      type="primary"
+    >
+    </Button>
+    <Button
+      circle
+      type="success"
+    ></Button>
+    <Button
+      circle
+      type="info"
+    ></Button>
+    <Button
+      circle
+      type="warning"
+    ></Button>
+    <Button
+      circle
+      type="danger"
+    ></Button>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+  import Button from '@/components/Button/Button.vue'
+</script>
 
-<style scoped></style>
+<style scoped>
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+</style>
