@@ -10,4 +10,5 @@ export interface ButtonProps {
   round?: boolean
   disabled?: boolean
   circle?: boolean
+  icon?: string
 }

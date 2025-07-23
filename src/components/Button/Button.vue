@@ -10,7 +10,12 @@
       'is-circle': circle,
     }"
   >
-    <span>
+    <Icon
+      v-if="icon"
+      :icon="icon"
+    >
+    </Icon>
+    <span v-else>
       <slot></slot>
     </span>
   </button>
@@ -18,7 +23,7 @@
 
 <script setup lang="ts">
   import type { ButtonProps } from './types'
-
+  import Icon from '../Icon/Icon.vue'
   defineOptions({
     name: 'MyButton',
   })
