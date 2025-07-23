@@ -43,8 +43,8 @@ export default defineConfig({
         text: 'Button',
         items: [
           { text: 'Button', link: '/components/Button' },
-          { text: 'Icon', link: '/components/Icon' }
-
+          { text: 'Icon', link: '/components/Icon' },
+          { text: 'Collapse', link: '/components/Collapse' }
         ]
       },
     ],

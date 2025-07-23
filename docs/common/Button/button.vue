@@ -8,7 +8,7 @@
     <Button type="danger">Danger</Button>
   </div>
   <div class="mb-4">
-    <Button plain>Default</Button>
+    <Button plain>Plain</Button>
     <Button
       plain
       type="primary"
@@ -42,7 +42,7 @@
       round
       type="primary"
     >
-      Primary</Button
+      Round</Button
     >
     <Button
       round
@@ -69,23 +69,28 @@
     <Button
       circle
       type="primary"
+      icon="fa-house"
     >
     </Button>
     <Button
       circle
       type="success"
+      icon="fa-thumbs-up"
     ></Button>
     <Button
       circle
       type="info"
+      icon="fa-headphones"
     ></Button>
     <Button
       circle
       type="warning"
+      icon="fa-user"
     ></Button>
     <Button
       circle
       type="danger"
+      icon="fa-comment"
     ></Button>
   </div>
 </template>
