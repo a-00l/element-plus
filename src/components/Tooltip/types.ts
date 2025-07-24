@@ -1,8 +1,8 @@
 import type { ComputedPlacement, Options } from "@popperjs/core"
 
 export interface TooltipProps {
-  visible: boolean;
-  content: string;
+  visible?: boolean;
+  content?: string;
   placement?: ComputedPlacement;
   popperOption?: Partial<Options>;
   trigger?: 'hover' | 'click';
