@@ -2,7 +2,7 @@
   <Tooltip
     content="这是一个提示"
     trigger="click"
-    v-model="visible"
+    v-model:visible="visible"
     effect="dark"
   >
     <Button>Hover{{ visible }}</Button>
@@ -13,5 +13,5 @@
   import Button from '@/components/Button/Button.vue'
   import Tooltip from '@/components/Tooltip/Tooltip.vue'
   import { ref } from 'vue'
-  const visible = ref()
+  const visible = ref(false)
 </script>

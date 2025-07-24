@@ -39,7 +39,7 @@
   import { createPopper } from '@popperjs/core'
   import type { TooltipEmits, TooltipInstance, TooltipProps } from './types'
   import { nextTick, onMounted, reactive, ref, watch } from 'vue'
-  import { debounce } from '../utils/debounce'
+  import { debounce } from '../../utils/debounce'
   import { useClickOutside } from '../../hooks/useClickOutside'
 
   const props = withDefaults(defineProps<TooltipProps>(), {
