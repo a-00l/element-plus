@@ -1,6 +1,6 @@
 import type { ComputedPlacement, Options } from "@popperjs/core";
 
-type commandType = string | number | object
+export type commandType = string | number | object | undefined
 
 export interface DropdownProps {
   placement?: ComputedPlacement;
@@ -21,3 +21,8 @@ export interface DropdownItemProps {
   command?: commandType
 }
 
+export interface DropdownContext {
+  command: (command: commandType) => void
+}
+
+export const DropdownSymbolKey = Symbol('Dropdown')

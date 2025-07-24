@@ -4,6 +4,8 @@
       :placement="placement"
       :trigger="trigger"
       :popperOptions="popperOptions"
+      effect="light"
+      v-model:visible="visible"
     >
       <slot></slot>
       <template #content>
@@ -15,7 +17,28 @@
 
 <script setup lang="ts">
   import Tooltip from '../Tooltip/Tooltip.vue'
-  import type { DropdownProps } from './types'
+  import {
+    DropdownSymbolKey,
+    type commandType,
+    type DropdownContext,
+    type DropdownEmits,
+    type DropdownProps,
+  } from './types'
+  import { provide, ref, watch } from 'vue'
 
-  const props = defineProps<DropdownProps>()
+  withDefaults(defineProps<DropdownProps>(), {
+    trigger: 'click',
+  })
+
+  const emits = defineEmits<DropdownEmits>()
+  const visible = ref(false)
+  watch(visible, (val) => {
+    emits('visible-change', val)
+  })
+
+  const command = (command: commandType) => {
+    emits('command', command)
+  }
+
+  provide(DropdownSymbolKey, { command })
 </script>

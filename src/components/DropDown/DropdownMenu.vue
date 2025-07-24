@@ -1,7 +1,7 @@
 <template>
-  <div class="my-dropdown-menu">
+  <ul class="my-dropdown-menu">
     <slot></slot>
-  </div>
+  </ul>
 </template>
 
 <script setup lang="ts"></script>
