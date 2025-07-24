@@ -10,4 +10,4 @@ description: 折叠组件
 ## 基础用法
 
 基础的按钮用法。
-<preview path="../common/Collapse/Collapse.vue"></preview>
+<preview path="../common/Collapse.vue"></preview>
