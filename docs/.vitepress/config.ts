@@ -46,7 +46,8 @@ export default defineConfig({
           { text: 'Icon', link: '/components/Icon' },
           { text: 'Collapse', link: '/components/Collapse' },
           { text: 'Tooltip', link: '/components/Tooltip' },
-          { text: 'Dropdown', link: '/components/Dropdown' }
+          { text: 'Dropdown', link: '/components/Dropdown' },
+          { text: 'Message', link: '/components/Message' },
         ]
       },
     ],
