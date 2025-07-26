@@ -12,8 +12,8 @@
 </template>
 
 <script setup>
-  import Dropdown from '@/components/DropDown/DropdownDown.vue'
-  import DropdownItem from '@/components/DropDown/DropdownItem.vue'
+  import Dropdown from '@/components/Dropdown/Dropdown.vue'
+  import DropdownItem from '@/components/Dropdown/DropdownItem.vue'
   const handlecommand = (command) => {
     console.log(command)
   }
