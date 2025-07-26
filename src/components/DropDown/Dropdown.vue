@@ -20,7 +20,6 @@
   import {
     DropdownSymbolKey,
     type commandType,
-    type DropdownContext,
     type DropdownEmits,
     type DropdownProps,
   } from './types'

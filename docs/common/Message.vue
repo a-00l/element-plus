@@ -1,12 +1,12 @@
 <template>
-  <Message
-    message="这是一条消息"
-    showClose
-  ></Message>
+  <Button @click="createMessage({ message: '创建消息', duration: 0, showClose: true })"
+    >创建消息</Button
+  >
 </template>
 
 <script setup>
   import Message from '@/components/message/Message.vue'
+  import { createMessage } from '@/components/message/method'
 </script>
 
 <style lang="scss" scoped></style>
