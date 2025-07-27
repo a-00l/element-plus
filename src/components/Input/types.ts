@@ -15,4 +15,5 @@ export interface InputProps {
 export interface InputEmits {
   (e: 'update:modelValue', value: string | number): void;
   (e: 'change', value: string | number): void;
+  (e: 'clear'): void
 }

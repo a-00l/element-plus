@@ -1,5 +1,15 @@
 <template>
-  <div class="my-input">
+  <div
+    class="my-input"
+    :class="{
+      [`my-input-${size}`]: size,
+      'is-disabled': disabled,
+      'my-input-group': $slots.append || $slots.prepend,
+      'my-input-group--prepend': $slots.prepend,
+      'my-input-group--append': $slots.append,
+      'is-suffix': $slots.suffix,
+    }"
+  >
     <!-- input -->
     <template v-if="type === 'text'">
       <!-- prepend slot -->
@@ -9,32 +19,72 @@
       >
         <slot name="prepend"></slot>
       </div>
-      <div class="my-input__warpper">
+      <div
+        class="my-input__wrapper"
+        :class="{ 'is-focus': isFocus }"
+      >
         <!-- prefix -->
         <span
           class="my-input__prefix"
           v-if="prefixIcon || $slots.prefix"
         >
           <span class="my-input__prefix-inner">
-            <slot name="prefix">
-              <Icon :icon="prefixIcon!"></Icon>
-            </slot>
+            <Icon
+              :icon="prefixIcon!"
+              class="my-input__icon"
+            ></Icon>
+            <slot name="prefix"> </slot>
           </span>
         </span>
         <input
-          type="text"
+          v-bind="$attrs"
+          ref="inputRef"
+          :type="inputType"
           class="my-input__inner"
+          v-model="modelInput"
+          :disabled="disabled"
           @input="handleInput"
+          @focus="handleFocus"
+          @blur="handleBlur"
+          @keydown.enter="emits('change', modelInput)"
         />
         <!-- suffix -->
         <span
           class="my-input__suffix"
-          v-if="suffixIcon || $slots.suffix"
+          v-if="suffixIcon || $slots.suffix || clearable || showPassword"
         >
           <span class="my-input__suffix-inner">
-            <slot name="suffix">
-              <Icon :icon="suffixIcon!"></Icon>
-            </slot>
+            <Icon
+              icon="times-circle"
+              class="my-input__icon my-input__clear"
+              v-if="isClearable"
+              @click="clearInput"
+            >
+            </Icon>
+
+            <Icon
+              v-if="suffixIcon"
+              :icon="suffixIcon!"
+              class="my-input__icon"
+            >
+            </Icon>
+
+            <Icon
+              icon="eye"
+              class="my-input__icon my-input__password"
+              v-if="showPassword && isPassword && modelInput.length > 0"
+              @click="toggleShowPwd"
+            >
+            </Icon>
+
+            <Icon
+              icon="eye-slash"
+              class="my-input__icon my-input__password"
+              v-if="showPassword && !isPassword && modelInput.length > 0"
+              @click="toggleShowPwd"
+            >
+            </Icon>
+            <slot name="suffix"> </slot>
           </span>
         </span>
       </div>
@@ -49,25 +99,98 @@
     <!-- textarea -->
     <template v-else>
       <div class="my-textarea">
-        <textarea @input="handleInput"></textarea>
+        <textarea
+          ref="inputRef"
+          :type="inputType"
+          v-model="modelInput"
+          @input="handleInput"
+          v-bind="$attrs"
+        ></textarea>
       </div>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { watch } from 'vue'
+  import { computed, nextTick, ref, watch } from 'vue'
   import Icon from '../Icon/Icon.vue'
   import type { InputEmits, InputProps } from './types'
+  import { useClickOutside } from '@/hooks/useClickOutside'
+
+  defineOptions({
+    inheritAttrs: false,
+  })
 
   const props = withDefaults(defineProps<InputProps>(), {
     type: 'text',
   })
 
   const emits = defineEmits<InputEmits>()
+
+  const modelInput = ref('')
+  const inputType = ref(props.type)
+  const inputRef = ref<HTMLInputElement>()
+
+  // 控制清空按钮显示
+  const isClearable = computed(
+    () => modelInput.value.length > 0 && props.clearable && props.disabled,
+  )
+
+  // 控制密码显示
+  const isShowPwd = ref(true)
+  const isPassword = computed(
+    () =>
+      modelInput.value.length > 0 &&
+      props.type !== 'textarea' &&
+      isShowPwd.value &&
+      props.showPassword &&
+      props.disabled,
+  )
+
+  const isFocus = ref(false)
+  // 获得焦点
+  const handleFocus = () => {
+    isFocus.value = true
+    nextTick(() => {
+      inputRef.value?.focus()
+    })
+  }
+
+  // 失去焦点
+  const handleBlur = () => {
+    isFocus.value = false
+    inputRef.value?.blur()
+
+    emits('change', modelInput.value)
+  }
+
+  // 处理input事件
   const handleInput = (e: Event) => {
     const target = e.target as HTMLInputElement
     emits('update:modelValue', target.value)
+  }
+
+  // 选中input中的文字
+  const selectInputText = () => {
+    if (props.disabled) return
+
+    inputRef.value?.select()
+  }
+
+  // 清空input
+  const clearInput = () => {
+    if (props.disabled) return
+
+    modelInput.value = ''
+    emits('clear')
+  }
+
+  // 密码关闭，显示
+  const toggleShowPwd = () => {
+    handleFocus()
+    // 切换显示
+    isShowPwd.value = !isShowPwd.value
+    inputType.value = isShowPwd.value ? 'text' : 'password'
   }
 
   watch(
@@ -78,4 +201,12 @@
       }
     },
   )
+
+  defineExpose({
+    clear: clearInput,
+    blur: handleBlur,
+    focus: handleFocus,
+    ref: inputRef,
+    select: selectInputText,
+  })
 </script>
