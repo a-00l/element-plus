@@ -48,6 +48,7 @@ export default defineConfig({
           { text: 'Tooltip', link: '/components/Tooltip' },
           { text: 'Dropdown', link: '/components/Dropdown' },
           { text: 'Message', link: '/components/Message' },
+          { text: 'Input', link: '/components/Input' },
         ]
       },
     ],

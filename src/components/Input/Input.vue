@@ -24,6 +24,7 @@
         <input
           type="text"
           class="my-input__inner"
+          @input="handleInput"
         />
         <!-- suffix -->
         <span
@@ -48,15 +49,33 @@
     <!-- textarea -->
     <template v-else>
       <div class="my-textarea">
-        <textarea></textarea>
+        <textarea @input="handleInput"></textarea>
       </div>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { watch } from 'vue'
   import Icon from '../Icon/Icon.vue'
-  import type { InputProps } from './types'
+  import type { InputEmits, InputProps } from './types'
 
-  defineProps<InputProps>()
+  const props = withDefaults(defineProps<InputProps>(), {
+    type: 'text',
+  })
+
+  const emits = defineEmits<InputEmits>()
+  const handleInput = (e: Event) => {
+    const target = e.target as HTMLInputElement
+    emits('update:modelValue', target.value)
+  }
+
+  watch(
+    () => props.modelValue,
+    (newValue, oldValue) => {
+      if (newValue !== oldValue) {
+        emits('change', newValue)
+      }
+    },
+  )
 </script>
