@@ -8,7 +8,7 @@ export interface MessageProps {
   duration?: number;
   close?: () => void
   offset?: number
-  destroy: () => void;
+  destroy: (id: string) => void;
   zIndex?: number
 }
 
@@ -17,3 +17,6 @@ export interface MessasgeArray {
   props: MessageProps;
   vm: ComponentInternalInstance;
 }
+
+type filter = 'id' | 'destroy' | 'zIndex'
+export type CreateMessage = Omit<MessageProps, filter>

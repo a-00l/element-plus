@@ -1,14 +1,18 @@
 <template>
   <Transition
     name="fade-up"
+    @enter="handleEnter"
     @after-leave="handleAfterLeave"
   >
     <div
       class="my-message"
-      :class="{ [`my-message--${type}`]: type }"
-      v-if="isMessage"
-      @mouseenter="handleMouseenter"
-      @mouseleave="handleMouseleave"
+      :class="{
+        [`my-message--${type}`]: type,
+        'is-close': showClose,
+      }"
+      v-if="visible"
+      @mouseenter="clear"
+      @mouseleave="destroy"
       ref="messageRef"
       :id="id"
       :style="cssStyle"
@@ -19,7 +23,7 @@
       <div
         class="my-message__close"
         v-if="showClose"
-        @click="handleClose"
+        @click.stop="handleClose"
       >
         <Icon icon="xmark"></Icon>
       </div>
@@ -39,7 +43,7 @@
     offset: 16,
   })
 
-  const isMessage = ref(false)
+  const visible = ref(false)
   const messageRef = ref<HTMLDivElement>()
   let timer: number
 
@@ -62,37 +66,38 @@
   const destroy = () => {
     if (props.duration) {
       timer = setTimeout(() => {
-        isMessage.value = false
+        visible.value = false
         // 删除对应message，重新触发动画
         deleteMessage(props.id)
       }, props.duration)
     }
   }
 
+  const handleEnter = () => {
+    if (messageRef.value) {
+      height.value = messageRef.value?.getBoundingClientRect().height!
+    }
+  }
   const handleAfterLeave = () => {
-    props.destroy()
+    props.destroy(props.id)
   }
 
-  const handleMouseenter = () => {
+  const clear = () => {
     if (timer) clearTimeout(timer)
   }
 
-  const handleMouseleave = () => {
-    destroy()
-  }
-
   const handleClose = () => {
-    isMessage.value = false
+    setTimeout(() => {
+      visible.value = false
+    })
+
     // 删除对应message，重新触发动画
     deleteMessage(props.id)
   }
 
   onMounted(async () => {
-    isMessage.value = true
+    visible.value = true
     destroy()
-
-    await nextTick()
-    height.value = messageRef.value?.getBoundingClientRect().height!
   })
 
   defineExpose({

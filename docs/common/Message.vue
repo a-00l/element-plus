@@ -1,7 +1,8 @@
 <template>
-  <Button @click="createMessage({ message: '创建消息', duration: 0, showClose: true })"
-    >创建消息</Button
-  >
+  <Button
+    @click="createMessage({ message: '创建消息', duration: 0, showClose: true, type: 'success' })"
+    >创建消息
+  </Button>
 </template>
 
 <script setup>
