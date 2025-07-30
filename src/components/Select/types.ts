@@ -1,12 +1,13 @@
-import type { InjectionKey, Ref } from "vue";
+import type { Ref } from "vue";
 
-type OptionValueType = string | number;
+export type OptionValueType = string | number;
 export interface SelectProps {
   modelValue: string | number;
   disabled?: boolean;
   clearable?: boolean;
   effect?: 'light' | 'dark';
   placeholder?: string;
+  filterable?: boolean;
 }
 
 export interface SelectEmits {
@@ -22,6 +23,7 @@ export interface OptionProps {
 export interface SelectContext {
   inputValue: Ref<string | number>;
   emits: SelectEmits;
+  searchValue: Ref<string>;
 }
 
 export const SelectContexKey = Symbol('selectRef')

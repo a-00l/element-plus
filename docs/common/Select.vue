@@ -1,20 +1,24 @@
 <template>
-  <Select disabled>
+  <Select
+    v-model="value"
+    :filterable="true"
+  >
     <Option
-      value="1"
-      label="选项1"
-      >选项1</Option
+      v-for="item in options"
+      :key="item.value"
+      :value="item.value"
+      :label="item.label"
     >
+    </Option>
+  </Select>
+
+  <Select v-model="value">
     <Option
-      value="2"
-      label="选项2"
-      >选项2</Option
+      v-for="item in options"
+      :key="item.value"
+      :value="item.value"
+      :label="item.label"
     >
-    <Option
-      value="3"
-      disabled
-      label="选项3"
-      >选项3
     </Option>
   </Select>
 </template>
@@ -22,4 +26,29 @@
 <script setup>
   import Select from '@/components/Select/Select.vue'
   import Option from '@/components/Select/Option.vue'
+  import { ref } from 'vue'
+
+  const value = ref('')
+  const options = [
+    {
+      value: 'Option1',
+      label: 'Option1',
+    },
+    {
+      value: 'Option2',
+      label: 'Option2',
+    },
+    {
+      value: 'Option3',
+      label: 'Option3',
+    },
+    {
+      value: 'Option4',
+      label: 'Option4',
+    },
+    {
+      value: 'Option5',
+      label: 'Option5',
+    },
+  ]
 </script>
