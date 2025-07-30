@@ -51,6 +51,42 @@
       background-color var(--my-transition-duration);
   }
 
+  .my-switch__label {
+    transition: var(--my-transition-duration-fast);
+    height: 20px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    vertical-align: middle;
+    color: var(--my-text-color-primary);
+
+    &.is-active {
+      color: var(--my-color-primary);
+    }
+  }
+
+  .my-switch--large {
+    .my-switch__label {
+      height: 24px;
+      font-size: 14px;
+    }
+
+    .my-switch--small {
+      font-size: 12px;
+      line-height: 16px;
+      height: 24px;
+    }
+  }
+
+  .my-switch__label--left {
+    margin-right: 10px;
+  }
+
+  .my-switch__label--right {
+    margin-left: 10px;
+  }
+
   &.is-checked {
     .my-switch__action {
       left: calc(100% - 17px);

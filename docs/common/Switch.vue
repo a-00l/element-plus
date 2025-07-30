@@ -1,5 +1,10 @@
 <template>
   <Switch v-model="value"></Switch>
+  <Switch
+    v-model="value"
+    active-text="开启"
+    inactive-text="关闭"
+  ></Switch>
 </template>
 
 <script setup>

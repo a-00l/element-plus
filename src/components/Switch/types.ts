@@ -6,6 +6,7 @@ export interface SwitchProps {
   inactiveText?: string;
   activeValue?: SwitchValue;
   inactiveValue?: SwitchValue;
+  size?: 'small' | 'large';
 }
 
 export interface SwitchEmits {
