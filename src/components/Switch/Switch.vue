@@ -57,7 +57,8 @@
   const switchToggle = ref(props.inactiveValue)
   // 切换switch
   const toggleSwitch = () => {
-    switchToggle.value = !switchToggle.value
+    switchToggle.value =
+      switchToggle.value === props.activeValue ? props.inactiveValue : props.activeValue
 
     emits('update:modelValue', switchToggle.value)
   }
