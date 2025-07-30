@@ -24,7 +24,10 @@
         class="my-switch__inner"
         v-if="inlinePrompt"
       >
-        <span class="is-text">
+        <span
+          class="is-text"
+          :style="widthCss"
+        >
           {{ switchToggle ? activeText : inactiveText }}
         </span>
       </div>
@@ -42,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
   import type { SwitchEmits, SwitchProps } from './types'
 
   const props = withDefaults(defineProps<SwitchProps>(), {
@@ -58,4 +61,10 @@
 
     emits('update:modelValue', switchToggle.value)
   }
+
+  const widthCss = computed(() => {
+    return {
+      width: props.width + 'px',
+    }
+  })
 </script>

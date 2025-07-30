@@ -11,6 +11,7 @@
     active-text="开启123123"
     inactive-text="关闭"
     inline-prompt
+    width="30"
   >
   </Switch>
 </template>

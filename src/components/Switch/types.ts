@@ -8,6 +8,7 @@ export interface SwitchProps {
   inactiveValue?: SwitchValue;
   inlinePrompt?: boolean;
   size?: 'small' | 'large';
+  width?: number | string;
 }
 
 export interface SwitchEmits {
