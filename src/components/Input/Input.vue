@@ -43,6 +43,7 @@
           class="my-input__inner"
           v-model="modelInput"
           :disabled="disabled"
+          :placeholder="placeholder"
           @input="handleInput"
           @focus="handleFocus"
           @blur="handleBlur"
@@ -104,7 +105,13 @@
           :type="inputType"
           v-model="modelInput"
           @input="handleInput"
+          @focus="handleFocus"
+          @blur="handleBlur"
+          @keydown.enter="emits('change', modelInput)"
           v-bind="$attrs"
+          class="my-input__inner"
+          :disabled="disabled"
+          :placeholder="placeholder"
         ></textarea>
       </div>
     </template>
