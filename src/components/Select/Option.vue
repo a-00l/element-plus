@@ -1,7 +1,10 @@
 <template>
   <li
     class="my-select__menu-item"
-    :class="{ 'is-disable': disabled }"
+    :class="{
+      'is-disable': disabled,
+      'is-selected': value === inputValue,
+    }"
     @click="handleClick"
     v-show="isMatch"
   >
@@ -23,7 +26,6 @@
   const { emits, inputValue, searchValue } = inject(SelectContexKey) as SelectContext
   // 当开启filterable搜索功能时，判断当前option是否满足搜索条件
   const isMatch = computed(() => {
-    console.log(searchValue.value)
     // 未开启搜索功能
     if (searchValue.value.trim() === '') return true
 
