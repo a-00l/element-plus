@@ -1,4 +1,5 @@
 import type { Ref } from "vue";
+import type { TooltipInstance } from "../Tooltip/types";
 
 export type OptionValueType = string | number;
 export interface SelectProps {
@@ -24,6 +25,7 @@ export interface SelectContext {
   inputValue: Ref<string | number>;
   emits: SelectEmits;
   searchValue: Ref<string>;
+  popper: Ref<TooltipInstance>;
 }
 
 export const SelectContexKey = Symbol('selectRef')

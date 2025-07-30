@@ -5,7 +5,7 @@
       'is-disable': disabled,
       'is-selected': value === inputValue,
     }"
-    @click="handleClick"
+    @click.stop="handleClick"
     v-show="isMatch"
   >
     <slot>
@@ -23,7 +23,7 @@
     disabled: false,
   })
 
-  const { emits, inputValue, searchValue } = inject(SelectContexKey) as SelectContext
+  const { emits, inputValue, searchValue, popper } = inject(SelectContexKey) as SelectContext
   // 当开启filterable搜索功能时，判断当前option是否满足搜索条件
   const isMatch = computed(() => {
     // 未开启搜索功能
@@ -35,9 +35,13 @@
   })
 
   const handleClick = () => {
-    inputValue.value = props.label ? props.label : props.value
+    if (props.disabled) return
 
+    inputValue.value = props.label ? props.label : props.value
     emits('update:modelValue', props.value)
+
+    // 隐藏下拉菜单
+    popper.value.hide()
   }
 
   onMounted(() => {

@@ -11,6 +11,5 @@ export const addOption = (option: OptionProps) => {
 
 // 查询所有满足value的option
 export const findOption = (value: OptionValueType) => {
-  debugger
   return optionArray.filter(item => item.value.toString().includes(value.toString()))
 }
