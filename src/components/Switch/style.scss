@@ -50,4 +50,16 @@
       border-color var(--my-transition-duration),
       background-color var(--my-transition-duration);
   }
+
+  &.is-checked {
+    .my-switch__action {
+      left: calc(100% - 17px);
+      color: var(--my-switch-on-color);
+    }
+
+    .my-switch__core {
+      border-color: var(--my-switch-border-color, var(--my-switch-on-color));
+      background-color: var(--my-switch-on-color);
+    }
+  }
 }
