@@ -1,5 +1,8 @@
 <template>
-  <Switch v-model="value"></Switch>
+  <Switch
+    v-model="value"
+    disabled
+  ></Switch>
   <Switch
     v-model="value"
     active-text="开启"

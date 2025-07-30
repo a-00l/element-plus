@@ -9,6 +9,10 @@ export interface SwitchProps {
   inlinePrompt?: boolean;
   size?: 'small' | 'large';
   width?: number | string;
+  disabled?: boolean;
+  name?: string;
+  id?: string;
+
 }
 
 export interface SwitchEmits {

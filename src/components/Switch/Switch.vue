@@ -3,6 +3,7 @@
     class="my-switch"
     :class="{
       'is-checked': switchToggle,
+      'is-disabled': disabled,
       [`my-switch--${size}`]: size,
     }"
     @click="toggleSwitch"
@@ -10,6 +11,8 @@
     <input
       type="checkbox"
       class="my-switch__input"
+      :name="name"
+      :id="id"
     />
     <span
       v-if="!inlinePrompt"
@@ -57,10 +60,13 @@
   const switchToggle = ref(props.inactiveValue)
   // 切换switch
   const toggleSwitch = () => {
+    if (props.disabled) return
+
     switchToggle.value =
       switchToggle.value === props.activeValue ? props.inactiveValue : props.activeValue
 
     emits('update:modelValue', switchToggle.value)
+    emits('change', switchToggle.value)
   }
 
   const widthCss = computed(() => {

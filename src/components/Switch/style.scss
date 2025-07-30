@@ -108,6 +108,15 @@
     margin-left: 10px;
   }
 
+  &.is-disabled {
+    opacity: 0.6;
+
+    .my-switch__core,
+    .my-switch__label {
+      cursor: not-allowed;
+    }
+  }
+
   &.is-checked {
     .my-switch__action {
       left: calc(100% - 17px);
