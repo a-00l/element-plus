@@ -1,0 +1,53 @@
+.my-switch {
+  --my-switch-on-color: var(--my-color-primary);
+  --my-switch-off-color: var(--my-border-color);
+}
+
+.my-switch {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  line-height: 20px;
+  height: 32px;
+  vertical-align: middle;
+
+  .my-switch__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+  }
+
+  .my-switch__core .my-switch__action {
+    position: absolute;
+    left: 1px;
+    border-radius: var(--my-border-radius-circle);
+    transition: all var(--my-transition-duration);
+    width: 16px;
+    height: 16px;
+    background-color: var(--my-color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--my-switch-off-color);
+  }
+
+  .my-switch__core {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    min-width: 40px;
+    height: 20px;
+    border: 1px solid var(--my-switch-border-color, var(--my-switch-off-color));
+    outline: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: var(--my-switch-off-color);
+    cursor: pointer;
+    transition:
+      border-color var(--my-transition-duration),
+      background-color var(--my-transition-duration);
+  }
+}

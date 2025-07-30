@@ -6,7 +6,6 @@
 </template>
 
 <script setup>
-  import Message from '@/components/message/Message.vue'
   import { createMessage } from '@/components/message/method'
 </script>
 
