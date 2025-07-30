@@ -12,18 +12,31 @@
       >
       </Input>
       <template #content>
-        <ul class="my-select__menu"></ul>
+        <ul class="my-select__menu">
+          <slot></slot>
+        </ul>
       </template>
     </Tooltip>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { provide, ref } from 'vue'
   import Input from '../Input/Input.vue'
   import Tooltip from '../Tooltip/Tooltip.vue'
-  import type { SelectProps } from './types'
+  import { SelectContexKey, type SelectEmits, type SelectProps } from './types'
 
-  const inputValue = ref('')
-  defineProps<SelectProps>()
+  withDefaults(defineProps<SelectProps>(), {
+    placeholder: '请选择',
+    disabled: false,
+    clearable: false,
+    effect: 'light',
+  })
+  const emits = defineEmits<SelectEmits>()
+  const inputValue = ref()
+
+  provide(SelectContexKey, {
+    inputValue,
+    emits,
+  })
 </script>
