@@ -6,6 +6,7 @@ export interface SwitchProps {
   inactiveText?: string;
   activeValue?: SwitchValue;
   inactiveValue?: SwitchValue;
+  inlinePrompt?: boolean;
   size?: 'small' | 'large';
 }
 

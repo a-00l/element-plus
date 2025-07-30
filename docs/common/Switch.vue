@@ -4,7 +4,15 @@
     v-model="value"
     active-text="开启"
     inactive-text="关闭"
-  ></Switch>
+  >
+  </Switch>
+  <Switch
+    v-model="value"
+    active-text="开启123123"
+    inactive-text="关闭"
+    inline-prompt
+  >
+  </Switch>
 </template>
 
 <script setup>
