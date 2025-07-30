@@ -134,7 +134,7 @@
 
   const emits = defineEmits<InputEmits>()
 
-  const modelInput = ref('')
+  const modelInput = ref(props.modelValue)
   const inputType = ref(props.type)
   const inputRef = ref<HTMLInputElement>()
 
@@ -203,6 +203,7 @@
   watch(
     () => props.modelValue,
     (newValue, oldValue) => {
+      modelInput.value = newValue
       if (newValue !== oldValue) {
         emits('change', newValue)
       }

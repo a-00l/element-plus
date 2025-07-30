@@ -1,7 +1,7 @@
 export type NativeType = 'text' | 'textarea' | 'password' | 'button' | 'checkbox' | 'file' | 'number' | 'radio'
 
 export interface InputProps {
-  modelValue: string | number;
+  modelValue: string;
   type?: NativeType | 'textarea';
   size?: 'small' | 'large';
   disabled?: boolean;
