@@ -50,6 +50,7 @@ export default defineConfig({
           { text: 'Message', link: '/components/Message' },
           { text: 'Input', link: '/components/Input' },
           { text: 'Switch', link: '/components/Switch' },
+          { text: 'Select', link: '/components/Select' },
         ]
       },
     ],
