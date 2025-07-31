@@ -1,5 +1,8 @@
 <template>
-  <Form>
+  <Form
+    :model="model"
+    :rules="rules"
+  >
     <FormItem
       label="Name"
       prop="name"
@@ -28,7 +31,10 @@
   import { reactive } from 'vue'
 
   const rules = {
-    name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+    name: [
+      { required: true, message: '请输入姓名', trigger: 'blur' },
+      { min: 3, message: '长度不能小于 3', trigger: 'blur' },
+    ],
     email: [{ required: true, message: '请输入邮箱', trigger: 'blur' }],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
   }
