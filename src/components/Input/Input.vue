@@ -73,7 +73,7 @@
             <Icon
               icon="eye"
               class="my-input__icon my-input__password"
-              v-if="showPassword && isPassword && modelInput.length > 0"
+              v-if="showPassword && isPassword && modelInput?.toString().length > 0"
               @click="toggleShowPwd"
             >
             </Icon>
@@ -81,7 +81,7 @@
             <Icon
               icon="eye-slash"
               class="my-input__icon my-input__password"
-              v-if="showPassword && !isPassword && modelInput.length > 0"
+              v-if="showPassword && !isPassword && modelInput?.toString().length > 0"
               @click="toggleShowPwd"
             >
             </Icon>
@@ -140,14 +140,14 @@
 
   // 控制清空按钮显示
   const isClearable = computed(
-    () => modelInput.value.length > 0 && props.clearable && props.disabled,
+    () => modelInput.value?.toString().length > 0 && props.clearable && props.disabled,
   )
 
   // 控制密码显示
   const isShowPwd = ref(true)
   const isPassword = computed(
     () =>
-      modelInput.value.length > 0 &&
+      modelInput.value?.toString().length > 0 &&
       props.type !== 'textarea' &&
       isShowPwd.value &&
       props.showPassword &&
