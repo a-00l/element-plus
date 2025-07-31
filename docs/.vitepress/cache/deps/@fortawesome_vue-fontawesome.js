@@ -1,15 +1,15 @@
 import {
-  config$1,
-  icon,
-  parse$1,
-  text
-} from "./chunk-6KMBOUDW.js";
-import {
   computed,
   defineComponent,
   h,
   watch
 } from "./chunk-HVR2FF6M.js";
+import {
+  config$1,
+  icon,
+  parse$1,
+  text
+} from "./chunk-6KMBOUDW.js";
 import {
   __commonJS
 } from "./chunk-BUSYA2B4.js";
