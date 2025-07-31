@@ -108,5 +108,7 @@
     popper: popperRef,
     stateSelect,
     filterMethod: props.filterMethod,
+    remote: props.remote,
+    remoteMethod: props.remoteMethod,
   })
 </script>

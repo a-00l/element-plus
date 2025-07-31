@@ -2,7 +2,8 @@
   <Select
     v-model="value"
     :filterable="true"
-    :filter-method="filterMethod"
+    remote
+    :remote-method="remoteMethod"
   >
     <Option
       v-for="item in options"
@@ -42,13 +43,17 @@
   import Option from '@/components/Select/Option.vue'
   import { ref } from 'vue'
 
-  const filterMethod = (value) => {
-    return [
-      {
-        label: 'Option1',
-        value: '1',
-      },
-    ]
+  const remoteMethod = (value) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([
+          {
+            label: 'Option1',
+            value: '1',
+          },
+        ])
+      }, 3000)
+    })
   }
 
   const value = ref('')

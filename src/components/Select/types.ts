@@ -10,6 +10,8 @@ export interface SelectProps {
   placeholder?: string;
   filterable?: boolean;
   filterMethod?: (value: string) => OptionProps[];
+  remote?: boolean;
+  remoteMethod?: (value: string) => Promise<OptionProps[]>;
 }
 
 export interface SelectEmits {
@@ -33,6 +35,8 @@ export interface SelectContext {
   searchValue: Ref<string>;
   popper: Ref<TooltipInstance>;
   filterMethod?: (value: string) => OptionProps[];
+  remote?: boolean;
+  remoteMethod?: (value: string) => Promise<OptionProps[]>;
 }
 
 export const SelectContexKey = Symbol('selectRef')
