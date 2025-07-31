@@ -9,6 +9,7 @@ export interface SelectProps {
   effect?: 'light' | 'dark';
   placeholder?: string;
   filterable?: boolean;
+  filterMethod?: (value: string) => OptionProps[];
 }
 
 export interface SelectEmits {
@@ -31,6 +32,7 @@ export interface SelectContext {
   emits: SelectEmits;
   searchValue: Ref<string>;
   popper: Ref<TooltipInstance>;
+  filterMethod?: (value: string) => OptionProps[];
 }
 
 export const SelectContexKey = Symbol('selectRef')

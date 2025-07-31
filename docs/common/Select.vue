@@ -2,6 +2,7 @@
   <Select
     v-model="value"
     :filterable="true"
+    :filter-method="filterMethod"
   >
     <Option
       v-for="item in options"
@@ -40,6 +41,15 @@
   import Select from '@/components/Select/Select.vue'
   import Option from '@/components/Select/Option.vue'
   import { ref } from 'vue'
+
+  const filterMethod = (value) => {
+    return [
+      {
+        label: 'Option1',
+        value: '1',
+      },
+    ]
+  }
 
   const value = ref('')
   const options = [

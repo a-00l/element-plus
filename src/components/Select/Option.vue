@@ -23,15 +23,21 @@
     disabled: false,
   })
 
-  const { emits, stateSelect, searchValue, popper } = inject(SelectContexKey) as SelectContext
+  const { emits, stateSelect, searchValue, popper, filterMethod } = inject(
+    SelectContexKey,
+  ) as SelectContext
   // 当开启filterable搜索功能时，判断当前option是否满足搜索条件
   const isMatch = computed(() => {
     // 未开启搜索功能
     if (searchValue.value.trim() === '') return true
 
-    const options = findOption(searchValue.value)
+    let options = findOption(searchValue.value)
+    // 使用外部定义的搜索功能
+    if (typeof filterMethod === 'function') {
+      options = filterMethod(searchValue.value)
+    }
 
-    return options.some((item) => item.value.toString().includes(props.value.toString()))
+    return options.some((item) => item.label?.toString().includes(props.value.toString()))
   })
 
   const handleClick = () => {

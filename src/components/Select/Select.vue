@@ -96,7 +96,6 @@
 
   // 设置input的placeholder
   const setPlaceholder = computed(() => {
-    debugger
     if (!isActive.value) return
 
     stateSelect.inputValue = ''
@@ -108,5 +107,6 @@
     emits,
     popper: popperRef,
     stateSelect,
+    filterMethod: props.filterMethod,
   })
 </script>
