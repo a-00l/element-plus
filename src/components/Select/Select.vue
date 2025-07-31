@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="my-select"
-    @click="handleClick"
-  >
+  <div class="my-select">
     <Tooltip
       :effect="effect"
       trigger="click"
@@ -10,8 +7,8 @@
       ref="popperRef"
     >
       <Input
-        v-model="inputValue"
-        :placeholder="currentPlaceholder"
+        v-model="stateSelect.inputValue"
+        :placeholder="setPlaceholder || placeholder"
         :disabled="disabled"
         :clearable="clearable"
         :readonly="!filterable"
@@ -36,10 +33,10 @@
 
 <script setup lang="ts">
   import Icon from '../Icon/Icon.vue'
-  import { provide, ref } from 'vue'
+  import { computed, provide, reactive, ref } from 'vue'
   import Input from '../Input/Input.vue'
   import Tooltip from '../Tooltip/Tooltip.vue'
-  import { SelectContexKey, type SelectEmits, type SelectProps } from './types'
+  import { SelectContexKey, type SelectEmits, type SelectProps, type StateSelect } from './types'
 
   const props = withDefaults(defineProps<SelectProps>(), {
     placeholder: '请选择',
@@ -50,11 +47,15 @@
   const emits = defineEmits<SelectEmits>()
 
   const popperRef = ref()
-  const currentPlaceholder = ref(props.placeholder)
+  const stateSelect: StateSelect = reactive({
+    inputValue: '',
+    selectOption: {
+      label: '',
+      value: '',
+    },
+  })
   // 记录下拉菜单显示与否
   const isActive = ref()
-  // 输入框中的值
-  const inputValue = ref('')
   // 搜索框中的值
   const searchValue = ref('')
   const search = (e: Event) => {
@@ -65,16 +66,18 @@
     searchValue.value = target.value
   }
 
-  const handleClick = () => {
-    if (props.disabled) return
+  const setPlaceholder = computed(() => {
+    debugger
+    if (!isActive.value) return
 
-    // TODO：点击下拉菜单，将输入框中的值设置为占位符
-  }
+    stateSelect.inputValue = ''
+    return stateSelect.selectOption.label?.toString() || props.placeholder
+  })
 
   provide(SelectContexKey, {
-    inputValue,
     searchValue,
     emits,
     popper: popperRef,
+    stateSelect,
   })
 </script>

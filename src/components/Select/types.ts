@@ -1,4 +1,4 @@
-import type { Ref } from "vue";
+import type { Reactive, Ref } from "vue";
 import type { TooltipInstance } from "../Tooltip/types";
 
 export type OptionValueType = string | number;
@@ -21,8 +21,13 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
+export interface StateSelect {
+  inputValue: OptionValueType;
+  selectOption: OptionProps;
+}
+
 export interface SelectContext {
-  inputValue: Ref<string | number>;
+  stateSelect: Reactive<StateSelect>;
   emits: SelectEmits;
   searchValue: Ref<string>;
   popper: Ref<TooltipInstance>;

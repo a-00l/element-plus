@@ -3,7 +3,7 @@
     class="my-select__menu-item"
     :class="{
       'is-disable': disabled,
-      'is-selected': value === inputValue,
+      'is-selected': value === stateSelect.inputValue,
     }"
     @click.stop="handleClick"
     v-show="isMatch"
@@ -23,7 +23,7 @@
     disabled: false,
   })
 
-  const { emits, inputValue, searchValue, popper } = inject(SelectContexKey) as SelectContext
+  const { emits, stateSelect, searchValue, popper } = inject(SelectContexKey) as SelectContext
   // 当开启filterable搜索功能时，判断当前option是否满足搜索条件
   const isMatch = computed(() => {
     // 未开启搜索功能
@@ -37,9 +37,14 @@
   const handleClick = () => {
     if (props.disabled) return
 
-    inputValue.value = props.label ? props.label : props.value
+    stateSelect.inputValue = props.label ? props.label : props.value
     emits('update:modelValue', props.value)
 
+    // 记录选中的option
+    stateSelect.selectOption = {
+      label: props.label,
+      value: props.value,
+    }
     // 隐藏下拉菜单
     popper.value.hide()
   }
