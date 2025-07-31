@@ -21,6 +21,19 @@
     >
     </Option>
   </Select>
+
+  <Select
+    v-model="value"
+    clearable
+  >
+    <Option
+      v-for="item in options"
+      :key="item.value"
+      :value="item.value"
+      :label="item.label"
+    >
+    </Option>
+  </Select>
 </template>
 
 <script setup>

@@ -1,5 +1,9 @@
 <template>
-  <div class="my-select">
+  <div
+    class="my-select"
+    @mouseenter="isHover = true"
+    @mouseleave="isHover = false"
+  >
     <Tooltip
       :effect="effect"
       trigger="click"
@@ -16,6 +20,15 @@
       >
         <template #suffix>
           <Icon
+            v-if="showClearIcon"
+            icon="times-circle"
+            class="my-input__icon my-input__clear"
+            @click.stop="clear"
+          >
+          </Icon>
+
+          <Icon
+            v-else
             icon="angle-down"
             class="header-angle"
             :class="{ 'is-active': isActive }"
@@ -66,6 +79,22 @@
     searchValue.value = target.value
   }
 
+  const clear = () => {
+    // 清空select选择状态
+    stateSelect.inputValue = ''
+    stateSelect.selectOption = {
+      label: '',
+      value: '',
+    }
+  }
+
+  const isHover = ref(false)
+  // 是否显示clearable图标
+  const showClearIcon = computed(
+    () => stateSelect.selectOption.label && props.clearable && !props.disabled && isHover.value,
+  )
+
+  // 设置input的placeholder
   const setPlaceholder = computed(() => {
     debugger
     if (!isActive.value) return
