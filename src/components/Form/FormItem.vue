@@ -7,6 +7,7 @@
       <slot
         name="label"
         :label="label"
+        :validate="validate"
       >
         {{ label }}
       </slot>
