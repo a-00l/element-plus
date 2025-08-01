@@ -1,18 +1,25 @@
 <template>
-  <div class="my-form-item">
+  <div
+    class="my-form-item"
+    :class="{ 'is-required': required }"
+  >
     <div class="my-form-item__label">
       <slot
         name="label"
         :label="label"
-        >{{ label }}
+      >
+        {{ label }}
       </slot>
     </div>
     <div class="my-form-item__content">
       <slot></slot>
-      <div class="my-form-item__error">{{ field }}</div>
+      <div
+        class="my-form-item__error"
+        v-if="field"
+      >
+        {{ field }}
+      </div>
     </div>
-    <button @click="validate">校验</button>
-    {{ formContext.model }}
   </div>
 </template>
 
@@ -20,25 +27,38 @@
   import Schema from 'async-validator'
   import {
     FormContextKey,
+    FormItemContextKey,
     type FormContext,
     type FormItemContext,
     type FormItemErrorField,
     type FormItemProps,
   } from './types'
-  import { inject, onMounted, ref } from 'vue'
+  import { inject, onMounted, provide, ref } from 'vue'
 
   const props = defineProps<FormItemProps>()
   const formContext = inject(FormContextKey) as FormContext
   const field = ref('')
   // 记录表单的初始值
   const initialValue = ref(formContext.model[props.prop!])
-  // 添加对应校验规则
-  const validator = new Schema({
-    [props.prop!]: formContext.rules[props.prop!],
-  })
 
+  const rules = (trigger?: string) => {
+    if (!props.prop) return []
+
+    // 有trigger时，筛选对应trigger的校验规则
+    // 没有trigger，校验所有规则
+    if (trigger) {
+      return formContext.rules[props.prop].filter((item) => item.trigger === trigger)
+    } else {
+      return formContext.rules[props.prop]
+    }
+  }
   // 校验
-  const validate = () => {
+  const validate = (trigger?: string) => {
+    // 添加对应校验规则
+    const validator = new Schema({
+      [props.prop!]: rules(trigger),
+    })
+
     return validator
       .validate({ [props.prop!]: formContext.model[props.prop!] })
       .then(() => {
@@ -69,6 +89,8 @@
     resetField,
     clearValidate,
   }
+
+  provide(FormItemContextKey, context)
 
   defineExpose(context)
   onMounted(() => {

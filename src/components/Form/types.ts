@@ -4,6 +4,7 @@ import type { RuleItem, ValidateError, ValidateFieldsError } from "async-validat
 export interface FormItemProps {
   label: string;
   prop?: string;
+  required?: boolean;
 }
 
 export interface FormProps {
@@ -33,3 +34,4 @@ export interface FormContext extends FormProps {
 }
 
 export const FormContextKey = Symbol('FormContext');
+export const FormItemContextKey = Symbol('FormItemContext');

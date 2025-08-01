@@ -7,7 +7,7 @@
       label="Name"
       prop="name"
     >
-      <Input v-model="model.name"></Input>
+      <input v-model="model.name"></input>
     </FormItem>
     <FormItem
       label="Email"

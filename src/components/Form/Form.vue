@@ -1,9 +1,6 @@
 <template>
   <div class="my-form">
     <slot></slot>
-    <button @click="resetFields">重置</button>
-    <button @click="clearValidate">清除校验</button>
-    <button @click="validate">验证</button>
   </div>
 </template>
 
