@@ -9,6 +9,7 @@
     </div>
     <div class="my-form-item__content">
       <slot></slot>
+      <div class="my-form-item__error">{{ field }}</div>
     </div>
     <button @click="validate">校验</button>
     {{ formContext.model }}
@@ -21,6 +22,7 @@
     FormContextKey,
     type FormContext,
     type FormItemContext,
+    type FormItemErrorField,
     type FormItemProps,
   } from './types'
   import { inject, onMounted, ref } from 'vue'
@@ -37,19 +39,18 @@
   const validate = () => {
     validator
       .validate({ [props.prop!]: formContext.model[props.prop!] })
-      .then(() => {})
-      .catch(({ errors, fields }) => {
+      .then(() => {
+        field.value = ''
+      })
+      .catch((e: FormItemErrorField) => {
         // 获取错误信息
-        field.value = fields[props.prop!]
-        console.log(errors)
-        console.log(fields)
+        field.value = e.errors[0].message ?? ''
       })
   }
 
   const context: FormItemContext = {
     prop: props.prop!,
     validate,
-    field,
   }
 
   onMounted(() => {

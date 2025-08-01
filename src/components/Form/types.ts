@@ -1,3 +1,4 @@
+import type { ValidateError, ValidateFieldsError } from "async-validator";
 import type { Ref } from "vue";
 
 export interface FormItemProps {
@@ -13,7 +14,11 @@ export interface FormProps {
 export interface FormItemContext {
   prop: string;
   validate: () => any;
-  field: Ref<string>;
+}
+
+export interface FormItemErrorField {
+  errors: ValidateError[];
+  fields: ValidateFieldsError;
 }
 
 export interface FormContext extends FormProps {
