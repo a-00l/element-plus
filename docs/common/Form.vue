@@ -40,8 +40,8 @@
   }
 
   const model = reactive({
-    name: '',
-    email: '',
-    password: '',
+    name: '123',
+    email: '222',
+    password: '111',
   })
 </script>

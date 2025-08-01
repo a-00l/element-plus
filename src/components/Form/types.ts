@@ -1,5 +1,5 @@
-import type { ValidateError, ValidateFieldsError } from "async-validator";
-import type { Ref } from "vue";
+import type { RuleItem, ValidateError, ValidateFieldsError } from "async-validator";
+
 
 export interface FormItemProps {
   label: string;
@@ -8,12 +8,18 @@ export interface FormItemProps {
 
 export interface FormProps {
   model: Record<string, any>;
-  rules: Record<string, any>;
+  rules: Record<string, RuleFormItem[]>;
+}
+
+export interface RuleFormItem extends RuleItem {
+  trigger?: 'blur' | 'change';
 }
 
 export interface FormItemContext {
   prop: string;
   validate: () => any;
+  resetField: () => void;
+  clearValidate: () => void;
 }
 
 export interface FormItemErrorField {

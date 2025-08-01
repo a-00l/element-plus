@@ -30,6 +30,8 @@
   const props = defineProps<FormItemProps>()
   const formContext = inject(FormContextKey) as FormContext
   const field = ref('')
+  // 记录表单的初始值
+  const initialValue = ref(formContext.model[props.prop!])
   // 添加对应校验规则
   const validator = new Schema({
     [props.prop!]: formContext.rules[props.prop!],
@@ -48,11 +50,25 @@
       })
   }
 
+  // 重置表单，将其值设置为初始值
+  const resetField = () => {
+    field.value = ''
+    formContext.model[props.prop!] = initialValue.value
+  }
+
+  // 清除错误信息
+  const clearValidate = () => {
+    field.value = ''
+  }
+
   const context: FormItemContext = {
     prop: props.prop!,
     validate,
+    resetField,
+    clearValidate,
   }
 
+  defineExpose(context)
   onMounted(() => {
     // 将所有校验都放在一个数组中
     formContext.addField(context)

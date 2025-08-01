@@ -11,10 +11,12 @@
   const props = defineProps<FormProps>()
 
   const formItemArray: FormItemProps[] = []
+  // 添加校验字段
   const addField = (field: FormItemProps) => {
     formItemArray.push(field)
   }
 
+  // 删除校验字段
   const removeField = (field: FormItemProps) => {
     formItemArray.splice(formItemArray.indexOf(field), 1)
   }
