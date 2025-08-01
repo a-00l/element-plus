@@ -17,7 +17,7 @@ export interface RuleFormItem extends RuleItem {
 
 export interface FormItemContext {
   prop: string;
-  validate: () => any;
+  validate: () => Promise<any>;
   resetField: () => void;
   clearValidate: () => void;
 }

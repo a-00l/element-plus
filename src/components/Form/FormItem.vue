@@ -39,7 +39,7 @@
 
   // 校验
   const validate = () => {
-    validator
+    return validator
       .validate({ [props.prop!]: formContext.model[props.prop!] })
       .then(() => {
         field.value = ''
@@ -47,6 +47,8 @@
       .catch((e: FormItemErrorField) => {
         // 获取错误信息
         field.value = e.errors[0].message ?? ''
+
+        return Promise.reject(e)
       })
   }
 
