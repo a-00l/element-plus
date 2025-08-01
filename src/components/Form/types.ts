@@ -1,4 +1,5 @@
 import type { RuleItem, ValidateError, ValidateFieldsError } from "async-validator";
+import type { InjectionKey } from "vue";
 
 
 export interface FormItemProps {
@@ -18,7 +19,7 @@ export interface RuleFormItem extends RuleItem {
 
 export interface FormItemContext {
   prop: string;
-  validate: () => Promise<any>;
+  validate: (trigger?: string) => Promise<any>;
   resetField: () => void;
   clearValidate: () => void;
 }
@@ -33,5 +34,5 @@ export interface FormContext extends FormProps {
   removeField: (field: FormItemContext) => void;
 }
 
-export const FormContextKey = Symbol('FormContext');
-export const FormItemContextKey = Symbol('FormItemContext');
+export const FormContextKey: InjectionKey<FormContext> = Symbol('FormContext');
+export const FormItemContextKey: InjectionKey<FormItemContext> = Symbol('FormItemContext');

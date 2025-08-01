@@ -22,7 +22,7 @@
     let validateFields: ValidateFieldsError = {}
     for (const field of formItemArray) {
       try {
-        await field.validate()
+        await field.validate('')
       } catch (e: any) {
         const error = e as FormItemErrorField
         validateFields = {

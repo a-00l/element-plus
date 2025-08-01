@@ -119,10 +119,11 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, nextTick, ref, watch } from 'vue'
+  import { computed, inject, nextTick, ref, watch } from 'vue'
   import Icon from '../Icon/Icon.vue'
   import type { InputEmits, InputProps } from './types'
   import { useClickOutside } from '@/hooks/useClickOutside'
+  import { FormItemContextKey } from '../Form/types'
 
   defineOptions({
     inheritAttrs: false,
@@ -155,6 +156,11 @@
   )
 
   const isFocus = ref(false)
+  const formItem = inject(FormItemContextKey)
+  const runRules = (trigger?: string) => {
+    formItem?.validate(trigger)
+  }
+
   // 获得焦点
   const handleFocus = () => {
     isFocus.value = true
@@ -169,12 +175,15 @@
     inputRef.value?.blur()
 
     emits('change', modelInput.value)
+    runRules('blur')
   }
 
   // 处理input事件
   const handleInput = (e: Event) => {
     const target = e.target as HTMLInputElement
+
     emits('update:modelValue', target.value)
+    runRules('change')
   }
 
   // 选中input中的文字

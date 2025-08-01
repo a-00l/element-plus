@@ -7,7 +7,7 @@
       label="Name"
       prop="name"
     >
-      <input v-model="model.name"></input>
+      <Input v-model="model.name"></Input>
     </FormItem>
     <FormItem
       label="Email"
@@ -35,7 +35,7 @@
       { required: true, message: '请输入姓名', trigger: 'blur' },
       { min: 3, message: '长度不能小于 3', trigger: 'blur' },
     ],
-    email: [{ required: true, message: '请输入邮箱', trigger: 'blur' }],
+    email: [{ min: 3, message: '长度不能小于 3', trigger: 'change' }],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
   }
 
