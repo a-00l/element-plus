@@ -2,6 +2,22 @@
   --my-input-inner-height: calc(var(--my-input-height, 32px) - 2px);
 }
 
+.my-textarea {
+  --my-input-text-color: var(--my-text-color-regular);
+  --my-input-border: var(--my-border);
+  --my-input-hover-border: var(--my-border-color-hover);
+  --my-input-focus-border: var(--my-color-primary);
+  --my-input-transparent-border: 0 0 0 1px transparent inset;
+  --my-input-border-color: var(--my-border-color);
+  --my-input-border-radius: var(--my-border-radius-base);
+  --my-input-bg-color: var(--my-fill-color-blank);
+  --my-input-icon-color: var(--my-text-color-placeholder);
+  --my-input-placeholder-color: var(--my-text-color-placeholder);
+  --my-input-hover-border-color: var(--my-border-color-hover);
+  --my-input-clear-hover-color: var(--my-text-color-secondary);
+  --my-input-focus-border-color: var(--my-color-primary);
+  --my-input-width: 100%;
+}
 .my-input-group {
   display: inline-flex;
   width: 100%;
@@ -65,6 +81,39 @@
       color: var(--my-disabled-text-color);
       -webkit-text-fill-color: var(--my-disabled-text-color);
       cursor: not-allowed;
+    }
+  }
+
+  .my-textarea {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+    font-size: var(--my-font-size-base);
+
+    .my-textarea__inner {
+      position: relative;
+      display: block;
+      resize: vertical;
+      padding: 5px 11px;
+      line-height: 1.5;
+      box-sizing: border-box;
+      width: 100%;
+      font-size: inherit;
+      font-family: inherit;
+      color: var(--my-input-text-color, var(--my-text-color-regular));
+      background-color: var(--my-input-bg-color, var(--my-fill-color-blank));
+      background-image: none;
+      -webkit-appearance: none;
+      box-shadow: 0 0 0 1px var(--my-input-border-color, var(--my-border-color)) inset;
+      border-radius: var(--my-input-border-radius, var(--my-border-radius-base));
+      transition: var(--my-transition-box-shadow);
+      border: none;
+    }
+
+    .my-textarea__inner:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px var(--my-input-focus-border-color) inset;
     }
   }
 }

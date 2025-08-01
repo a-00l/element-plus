@@ -99,7 +99,10 @@
     </template>
     <!-- textarea -->
     <template v-else>
-      <div class="my-textarea">
+      <div
+        class="my-textarea"
+        :class="{ 'is-focus': isFocus }"
+      >
         <textarea
           ref="inputRef"
           :type="inputType"
@@ -109,7 +112,7 @@
           @blur="handleBlur"
           @keydown.enter="emits('change', modelInput)"
           v-bind="$attrs"
-          class="my-input__inner"
+          class="my-textarea__inner"
           :disabled="disabled"
           :placeholder="placeholder"
         ></textarea>
