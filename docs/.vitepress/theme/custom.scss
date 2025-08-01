@@ -22,3 +22,41 @@ h6,
 p {
   color: var(--my-c-text-1);
 }
+
+table tr td:nth-child(2) {
+  font-family: var(--my-font-family);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5em;
+  table-layout: fixed;
+}
+
+thead,
+tbody {
+  width: 100% !important;
+}
+
+tr {
+  border-top: 1px solid var(--my-border-color-light);
+  transition: background-color 0.25s;
+}
+
+td,
+th {
+  background-color: #fff !important;
+  border: none !important;
+  padding: 0;
+  width: 1%;
+}
+
+td,
+th {
+  height: 48px;
+  min-height: 48px;
+  vertical-align: middle;
+}
