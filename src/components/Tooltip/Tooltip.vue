@@ -10,7 +10,7 @@
     >
       <slot></slot>
     </div>
-    <Transition name="tooltip">
+    <Transition :name="transition">
       <div
         class="my-tooltip__popper"
         ref="popperRef"
@@ -48,6 +48,7 @@
     effect: 'dark',
     showAfter: 0,
     hideAfter: 200,
+    transition: 'tooltip',
   })
 
   const emits = defineEmits<TooltipEmits>()

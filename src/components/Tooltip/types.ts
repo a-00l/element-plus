@@ -9,6 +9,7 @@ export interface TooltipProps {
   effect?: 'dark' | 'light';
   showAfter?: number;
   hideAfter?: number;
+  transition?: string;
 }
 
 export interface TooltipEmits {
