@@ -59,10 +59,6 @@
     }
   }
 
-  onMounted(() => {
-    validate()
-  })
-
   provide(FormContextKey, {
     model: props.model,
     rules: props.rules,
