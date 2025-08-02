@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="my-select"
-    @mouseenter="isHover = true"
-    @mouseleave="isHover = false"
-  >
+  <div class="my-select">
     <Tooltip
       :effect="effect"
       trigger="click"
@@ -12,31 +8,38 @@
       :hide-after="0"
       :popper-option="sameWidth"
     >
-      <Input
-        v-model="stateSelect.inputValue"
-        :placeholder="setPlaceholder || placeholder"
-        :disabled="disabled"
-        :clearable="clearable"
-        :readonly="!filterable"
-        @input="search"
+      <!-- 包裹 Input 组件的 div，监听鼠标事件 -->
+      <div
+        @mouseenter="isHover = true"
+        @mouseleave="isHover = false"
+        class="input-wrapper"
       >
-        <template #suffix>
-          <Icon
-            v-if="showClearIcon"
-            icon="times-circle"
-            class="my-input__icon my-input__clear"
-            @click.stop="clear"
-          >
-          </Icon>
+        <Input
+          v-model="stateSelect.inputValue"
+          :placeholder="setPlaceholder || placeholder"
+          :disabled="disabled"
+          :readonly="!filterable"
+          clearable
+          @input="search"
+        >
+          <template #suffix>
+            <Icon
+              v-if="showClearIcon"
+              icon="times-circle"
+              class="my-input__icon my-input__clear"
+              @click.stop="clear"
+            >
+            </Icon>
 
-          <Icon
-            v-else
-            icon="angle-down"
-            class="header-angle"
-            :class="{ 'is-active': isActive }"
-          />
-        </template>
-      </Input>
+            <Icon
+              v-else
+              icon="angle-down"
+              class="header-angle"
+              :class="{ 'is-active': isActive }"
+            />
+          </template>
+        </Input>
+      </div>
       <template #content>
         <ul class="my-select__menu">
           <slot></slot>
@@ -114,6 +117,7 @@
   }
 
   const isHover = ref(false)
+
   // 是否显示clearable图标
   const showClearIcon = computed(
     () => stateSelect.selectOption.label && props.clearable && !props.disabled && isHover.value,
