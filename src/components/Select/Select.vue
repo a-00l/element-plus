@@ -125,10 +125,14 @@
 
   // 设置input的placeholder
   const setPlaceholder = computed(() => {
-    if (!isActive.value) return
+    const label = stateSelect.selectOption.label?.toString()
+    if (!isActive.value) {
+      stateSelect.inputValue = label ?? ''
 
+      return
+    }
     stateSelect.inputValue = ''
-    return stateSelect.selectOption.label?.toString() || props.placeholder
+    return label || props.placeholder
   })
 
   provide(SelectContexKey, {
