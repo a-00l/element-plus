@@ -9,6 +9,7 @@
       trigger="click"
       v-model:visible="isActive"
       ref="popperRef"
+      :hide-after="0"
       :popper-option="sameWidth"
     >
       <Input
