@@ -9,6 +9,7 @@
       trigger="click"
       v-model:visible="isActive"
       ref="popperRef"
+      :popper-option="sameWidth"
     >
       <Input
         v-model="stateSelect.inputValue"
@@ -50,6 +51,29 @@
   import Input from '../Input/Input.vue'
   import Tooltip from '../Tooltip/Tooltip.vue'
   import { SelectContexKey, type SelectEmits, type SelectProps, type StateSelect } from './types'
+
+  const sameWidth: any = {
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 8],
+        },
+      },
+      {
+        name: 'sameWidth',
+        enabled: true,
+        phase: 'beforeWrite',
+        requires: ['computeStyles'],
+        fn: ({ state }: any) => {
+          state.styles.popper.width = `${state.rects.reference.width}px`
+        },
+        effect: ({ state }: any) => {
+          state.elements.popper.style.width = `${state.elements.reference.offsetWidth}px`
+        },
+      },
+    ],
+  }
 
   const props = withDefaults(defineProps<SelectProps>(), {
     placeholder: '请选择',
