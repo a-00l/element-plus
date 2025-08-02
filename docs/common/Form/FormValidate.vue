@@ -36,7 +36,10 @@
     >
       <my-switch v-model="form.delivery" />
     </my-form-item>
-    <my-form-item label="Activity form">
+    <my-form-item
+      label="Activity form"
+      prop="desc"
+    >
       <my-input
         v-model="form.desc"
         type="textarea"
@@ -48,9 +51,10 @@
         @click="onSubmit"
         >Create</my-button
       >
-      <my-button>Cancel</my-button>
+      <my-button @click="reset">Cancel</my-button>
     </my-form-item>
   </my-form>
+  {{ form.desc }}
 </template>
 
 <script setup>
@@ -67,7 +71,6 @@
   const form = reactive({
     name: '',
     region: '',
-    delivery: false,
     desc: '',
   })
 
@@ -81,8 +84,8 @@
       { required: true, message: '请填写活动形式', trigger: 'blur' },
       {
         validator: (rule, value, callback) => {
-          if (value && value.length > 100) {
-            callback(new Error('活动形式描述不能超过100个字符'))
+          if (value && value.length > 4) {
+            callback(new Error('活动形式描述不能超过4个字符'))
           } else {
             callback()
           }
@@ -93,12 +96,10 @@
   }
 
   const onSubmit = async () => {
-    try {
-      await formRef.value.validate()
-      console.log('submit!', form)
-    } catch (e) {
-      console.log('error submit!', e)
-      return false
-    }
+    formRef.value.validate()
+  }
+
+  const reset = () => {
+    formRef.value.resetFields()
   }
 </script>

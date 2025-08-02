@@ -1,7 +1,10 @@
 <template>
   <div
     class="my-form-item"
-    :class="{ 'is-required': required }"
+    :class="{
+      'is-required': required,
+      'is-error': field,
+    }"
   >
     <div class="my-form-item__label">
       <slot
@@ -50,7 +53,7 @@
     if (trigger) {
       return formContext.rules[props.prop].filter((item) => item.trigger === trigger)
     } else {
-      return formContext.rules[props.prop]
+      return formContext.rules[props.prop] ?? []
     }
   }
   // 校验
