@@ -12,7 +12,6 @@ export const useClickOutside = (element: Ref<HTMLElement | undefined>, callback:
   }
 
   onMounted(() => {
-    console.log('绑定事件');
     document.addEventListener('click', clickOutside)
   })
 
