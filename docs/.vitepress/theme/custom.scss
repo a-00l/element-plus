@@ -71,3 +71,47 @@ th {
     max-width: 100% !important;
   }
 }
+
+code {
+  color: #0c61c9 !important;
+  background-color: #f5f7fa !important;
+  font-size: 14px !important;
+}
+
+.VPLink :hover {
+  color: #409eff !important;
+}
+a {
+  text-decoration: none !important;
+}
+
+.outline-marker {
+  width: 4px !important;
+  height: 14px !important;
+  transition:
+    top 0.25s ease-in-out,
+    opacity 0.25s !important;
+  background-color: #409eff !important;
+}
+
+.outline-link {
+  font-size: 12px !important;
+  color: #909399 !important;
+
+  &.active {
+    color: #409eff !important;
+  }
+}
+
+.VPDocAsideOutline {
+  .content {
+    border: none !important;
+  }
+}
+.curtain {
+  background-color: #fff !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
