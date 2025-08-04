@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import type { SwitchEmits, SwitchProps } from './types'
 
   const props = withDefaults(defineProps<SwitchProps>(), {
@@ -74,4 +74,13 @@
       width: props.width + 'px',
     }
   })
+
+  watch(
+    () => props.modelValue,
+    (newVal) => {
+      console.log(newVal)
+
+      switchToggle.value = newVal
+    },
+  )
 </script>
