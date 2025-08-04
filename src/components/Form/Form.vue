@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, provide } from 'vue'
+  import { provide } from 'vue'
   import {
     FormContextKey,
     type FormItemContext,
@@ -49,6 +49,7 @@
 
   const resetFields = () => {
     for (const field of formItemArray) {
+      debugger
       field.resetField()
     }
   }
