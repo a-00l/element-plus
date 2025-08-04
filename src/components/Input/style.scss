@@ -82,6 +82,17 @@
       -webkit-text-fill-color: var(--my-disabled-text-color);
       cursor: not-allowed;
     }
+
+    .my-textarea {
+      background-color: var(--my-disabled-bg-color);
+
+      .my-textarea__inner {
+        color: var(--my-disabled-text-color);
+        background-color: var(--my-disabled-bg-color);
+        -webkit-text-fill-color: var(--my-disabled-text-color);
+        cursor: not-allowed;
+      }
+    }
   }
 
   .my-textarea {
