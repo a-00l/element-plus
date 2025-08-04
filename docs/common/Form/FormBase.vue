@@ -44,14 +44,15 @@
 </template>
 
 <script setup>
+  import { reactive } from 'vue'
+  import myButton from '@/components/Button/Button.vue'
   import myForm from '@/components/Form/Form.vue'
   import myFormItem from '@/components/Form/FormItem.vue'
   import myInput from '@/components/Input/Input.vue'
   import mySelect from '@/components/Select/Select.vue'
   import myOption from '@/components/Select/Option.vue'
   import mySwitch from '@/components/Switch/Switch.vue'
-  import myButton from '@/components/Button/Button.vue'
-  import { reactive } from 'vue'
+
   const form = reactive({
     name: '',
     region: '',
