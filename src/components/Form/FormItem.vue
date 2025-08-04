@@ -88,11 +88,13 @@
     field.value = ''
   }
 
+  debugger
   const context: FormItemContext = {
     prop: props.prop!,
     validate,
     resetField,
     clearValidate,
+    disabled: typeof formContext.disabled === 'boolean' ? formContext.disabled : props.disabled,
   }
 
   provide(FormItemContextKey, context)

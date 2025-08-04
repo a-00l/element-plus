@@ -6,11 +6,13 @@ export interface FormItemProps {
   label: string;
   prop?: string;
   required?: boolean;
+  disabled?: boolean | undefined;
 }
 
 export interface FormProps {
   model: Record<string, any>;
   rules: Record<string, RuleFormItem[]>;
+  disabled?: boolean;
 }
 
 export interface FormInstance {
@@ -28,6 +30,7 @@ export interface FormItemContext {
   validate: (trigger?: string) => Promise<any>;
   resetField: () => void;
   clearValidate: () => void;
+  disabled?: boolean;
 }
 
 export interface FormItemInstance {

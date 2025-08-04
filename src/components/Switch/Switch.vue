@@ -3,7 +3,7 @@
     class="my-switch"
     :class="{
       'is-checked': switchToggle,
-      'is-disabled': disabled,
+      'is-disabled': disabled || formItem?.disabled,
       [`my-switch--${size}`]: size,
     }"
     @click="toggleSwitch"
@@ -48,8 +48,11 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue'
+  import { computed, inject, ref, watch } from 'vue'
   import type { SwitchEmits, SwitchProps } from './types'
+  import { FormItemContextKey } from '../Form/types'
+
+  const formItem = inject(FormItemContextKey)
 
   const props = withDefaults(defineProps<SwitchProps>(), {
     activeValue: true,
@@ -60,7 +63,7 @@
   const switchToggle = ref(props.inactiveValue)
   // 切换switch
   const toggleSwitch = () => {
-    if (props.disabled) return
+    if (props.disabled || formItem?.disabled) return
 
     switchToggle.value =
       switchToggle.value === props.activeValue ? props.inactiveValue : props.activeValue

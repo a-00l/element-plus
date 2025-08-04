@@ -3,7 +3,7 @@
     class="my-input"
     :class="{
       [`my-input-${size}`]: size,
-      'is-disabled': disabled,
+      'is-disabled': disabled || formItem?.disabled,
       'my-input-group': $slots.append || $slots.prepend,
       'my-input-group--prepend': $slots.prepend,
       'my-input-group--append': $slots.append,
@@ -42,7 +42,7 @@
           :type="inputType"
           class="my-input__inner"
           v-model="modelInput"
-          :disabled="disabled"
+          :disabled="disabled || formItem?.disabled"
           :placeholder="placeholder"
           @input="handleInput"
           @focus="handleFocus"
@@ -113,8 +113,9 @@
           @keydown.enter="emits('change', modelInput)"
           v-bind="$attrs"
           class="my-textarea__inner"
-          :disabled="disabled"
+          :disabled="disabled || formItem?.disabled"
           :placeholder="placeholder"
+          name="textarea"
         ></textarea>
       </div>
     </template>

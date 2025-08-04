@@ -15,8 +15,9 @@
   } from './types'
   import type { ValidateFieldsError } from 'async-validator'
 
-  const props = defineProps<FormProps>()
-
+  const props = withDefaults(defineProps<FormProps>(), {
+    disabled: undefined,
+  })
   const formItemArray: FormItemContext[] = []
   const validate = async () => {
     // 收集所有错误信息
@@ -50,7 +51,6 @@
 
   const resetFields = () => {
     for (const field of formItemArray) {
-      debugger
       field.resetField()
     }
   }
@@ -66,6 +66,7 @@
     rules: props.rules,
     addField,
     removeField,
+    disabled: props.disabled,
   })
 
   defineExpose<FormInstance>({
