@@ -81,8 +81,6 @@
   watch(
     () => props.modelValue,
     (newVal) => {
-      console.log(newVal)
-
       switchToggle.value = newVal
     },
   )

@@ -138,8 +138,6 @@
     // 点击外部元素，隐藏提示框
     useClickOutside(parentRef, () => {
       if (isPopper.value) {
-        console.log('调用函数')
-
         hideFinal()
       }
     })

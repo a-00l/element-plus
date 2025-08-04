@@ -88,7 +88,6 @@
     field.value = ''
   }
 
-  debugger
   const context: FormItemContext = {
     prop: props.prop!,
     validate,

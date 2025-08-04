@@ -28,8 +28,6 @@
 
   const dropdown = inject(DropdownSymbolKey) as DropdownContext
   const handleclick = (command: commandType) => {
-    console.log(command)
-
     dropdown.command(command)
   }
 </script>
