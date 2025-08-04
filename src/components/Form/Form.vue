@@ -8,6 +8,7 @@
   import { provide } from 'vue'
   import {
     FormContextKey,
+    type FormInstance,
     type FormItemContext,
     type FormItemErrorField,
     type FormProps,
@@ -67,7 +68,7 @@
     removeField,
   })
 
-  defineExpose({
+  defineExpose<FormInstance>({
     validate,
     resetFields,
     clearValidate,

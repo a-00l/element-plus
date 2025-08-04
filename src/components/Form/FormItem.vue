@@ -35,6 +35,7 @@
     type FormContext,
     type FormItemContext,
     type FormItemErrorField,
+    type FormItemInstance,
     type FormItemProps,
   } from './types'
   import { inject, onMounted, provide, ref } from 'vue'
@@ -96,7 +97,12 @@
 
   provide(FormItemContextKey, context)
 
-  defineExpose(context)
+  defineExpose<FormItemInstance>({
+    validate,
+    resetField,
+    clearValidate,
+  })
+
   onMounted(() => {
     // 将所有校验都放在一个数组中
     formContext.addField(context)

@@ -13,12 +13,24 @@ export interface FormProps {
   rules: Record<string, RuleFormItem[]>;
 }
 
+export interface FormInstance {
+  validate: () => Promise<any>;
+  resetFields: () => void;
+  clearValidate: () => void;
+}
+
 export interface RuleFormItem extends RuleItem {
   trigger?: 'blur' | 'change';
 }
 
 export interface FormItemContext {
   prop: string;
+  validate: (trigger?: string) => Promise<any>;
+  resetField: () => void;
+  clearValidate: () => void;
+}
+
+export interface FormItemInstance {
   validate: (trigger?: string) => Promise<any>;
   resetField: () => void;
   clearValidate: () => void;
