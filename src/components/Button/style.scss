@@ -116,6 +116,12 @@
     --my-button-hover-bg-color: var(--my-color-#{$val});
     --my-button-hover-border-color: var(--my-color-#{$val});
     --my-button-active-text-color: var(--my-color-white);
+
+    &.is-disabled {
+      color: var(--my-color-#{$val}-light-5);
+      background-color: var(--my-color-#{$val}-light-9);
+      border-color: var(--my-color-#{$val}-light-8);
+    }
   }
 }
 
