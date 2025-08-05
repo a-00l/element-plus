@@ -1,0 +1,28 @@
+<template>
+  <div>
+    <my-button
+      type="primary"
+      loading
+    >
+      Loading
+    </my-button>
+    <my-button
+      type="primary"
+      loading
+      loadingIcon="thumbs-up"
+    >
+      Loading
+    </my-button>
+    <my-button
+      type="primary"
+      loading
+      loadingIcon="list-check"
+    >
+      Loading
+    </my-button>
+  </div>
+</template>
+
+<script setup>
+  import myButton from '@/components/Button/Button.vue'
+</script>
