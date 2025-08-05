@@ -7,6 +7,11 @@ export interface CollapseProps {
   accordion?: boolean;
 }
 
+export interface CollapseIntance {
+  setActiveName: (name: string) => void;
+  activeName: Ref<NameType>;
+}
+
 export interface CollapseItemProps {
   title: string;
   name: string;

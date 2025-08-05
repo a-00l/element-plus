@@ -9,6 +9,7 @@
   import {
     CollapseContextKey,
     type CollapseEmits,
+    type CollapseIntance,
     type CollapseProps,
     type NameType,
   } from './types'
@@ -50,5 +51,10 @@
   provide(CollapseContextKey, {
     activeName,
     setActiveName,
+  })
+
+  defineExpose<CollapseIntance>({
+    setActiveName,
+    activeName,
   })
 </script>
