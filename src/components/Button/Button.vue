@@ -1,7 +1,7 @@
 <template>
   <button
     class="my-button"
-    :disabled="disabled || formItem?.disabled"
+    :disabled="disabled || formItem?.disabled || loading"
     :class="{
       [`my-button--${type}`]: type,
       [`my-button--${size}`]: size,
@@ -9,14 +9,21 @@
       'is-round': round,
       'is-disabled': disabled || formItem?.disabled,
       'is-circle': circle,
+      'is-loading': loading,
     }"
   >
     <Icon
-      v-if="icon"
-      :icon="icon"
+      icon="spinner"
+      v-if="loading"
+      spin
     >
     </Icon>
-    <span v-else>
+    <Icon
+      :icon="icon"
+      v-if="icon"
+    >
+    </Icon>
+    <span>
       <slot></slot>
     </span>
   </button>
@@ -26,11 +33,19 @@
   import type { ButtonProps } from './types'
   import Icon from '../Icon/Icon.vue'
   import { FormItemContextKey } from '../Form/types'
-  import { inject } from 'vue'
+  import { inject, ref } from 'vue'
   const formItem = inject(FormItemContextKey)
   defineOptions({
     name: 'MyButton',
   })
 
-  defineProps<ButtonProps>()
+  const props = withDefaults(defineProps<ButtonProps>(), {
+    plain: false,
+    round: false,
+    disabled: false,
+    circle: false,
+    loading: false,
+  })
+
+  const loading = ref(props.loading)
 </script>
