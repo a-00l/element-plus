@@ -22,7 +22,7 @@ yarn add
   "@fortawesome/vue-fontawesome"
 ```
 
-## 注册所有图标
+## 注册图标
 
 ```ts
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -40,6 +40,10 @@ export const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon).mount('#app')
 ```
 
+## 注意
+
+我们用的是[Font Awesome](https://fontawesome.com/search?ic=free&o=r)免费版本，而且只注册了`fas`、`far`、`fab`三个图标库，所以如果使用其他图标库的图标，需要先注册图标库。
+
 ## 基础用法
 
 基础的图标用法。（具体参考[Font Awesome](https://docs.fontawesome.com/web/use-with/vue)）
@@ -55,3 +59,12 @@ app.component('font-awesome-icon', FontAwesomeIcon).mount('#app')
   </div>
 </template>
 ```
+
+## API
+
+### Attributes
+
+| 属性名 | 说明 | 类型                | 默认值 |
+| ------ | ---- | ------------------- | ------ |
+| size   | 尺寸 | `number` / `string` | —      |
+| color  | 颜色 | `string`            | —      |
