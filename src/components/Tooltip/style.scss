@@ -46,7 +46,7 @@
       background: var(--my-text-color-primary);
     }
     &[data-popper-placement^='top'] > #arrow {
-      bottom: -5px;
+      bottom: -4px;
     }
 
     &[data-popper-placement^='bottom'] > #arrow {
@@ -58,7 +58,7 @@
     }
 
     &[data-popper-placement^='right'] > #arrow {
-      left: -5px;
+      left: -4px;
     }
     &[data-popper-placement^='top'] > #arrow::before {
       border-right: 1px solid var(--my-popover-border-color);
