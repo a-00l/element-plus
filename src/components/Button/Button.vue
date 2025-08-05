@@ -11,6 +11,7 @@
       'is-circle': circle,
       'is-loading': loading,
     }"
+    ref="btnRef"
   >
     <Icon
       :icon="loadingIcon"
@@ -30,10 +31,10 @@
 </template>
 
 <script setup lang="ts">
-  import type { ButtonProps } from './types'
+  import type { ButtonInstance, ButtonProps } from './types'
   import Icon from '../Icon/Icon.vue'
   import { FormItemContextKey } from '../Form/types'
-  import { inject, ref } from 'vue'
+  import { inject, ref, type Ref } from 'vue'
   const formItem = inject(FormItemContextKey)
   defineOptions({
     name: 'MyButton',
@@ -49,4 +50,12 @@
   })
 
   const loading = ref(props.loading)
+  const btnRef = ref() as Ref<HTMLButtonElement>
+
+  defineExpose<ButtonInstance>({
+    ref: btnRef,
+    size: props.size ?? 'default',
+    type: props.type,
+    disabled: props.disabled,
+  })
 </script>

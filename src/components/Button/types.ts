@@ -1,6 +1,8 @@
+import type { Ref } from "vue"
+
 export type ButtonType = 'primary' | 'success' | 'info' | 'warning' | 'danger'
 
-export type ButtonSize = 'small' | 'medium' | 'large'
+export type ButtonSize = 'small' | 'default' | 'large'
 
 // Button组件的props
 export interface ButtonProps {
@@ -13,4 +15,11 @@ export interface ButtonProps {
   icon?: string
   loading?: boolean
   loadingIcon?: string
+}
+
+export interface ButtonInstance {
+  ref: Ref<HTMLButtonElement>
+  size: ButtonSize
+  type: ButtonType
+  disabled: boolean
 }
