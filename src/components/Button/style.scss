@@ -133,10 +133,20 @@
   border-radius: var(--my-border-radius-base);
 }
 
+.my-button--large.is-circle {
+  width: var(--my-button-size);
+  padding: 12px;
+}
+
 .my-button--small {
   --my-button-size: 24px;
   height: var(--my-button-size);
   padding: 5px 11px;
   font-size: 12px;
   border-radius: calc(var(--my-border-radius-base) - 1px);
+}
+
+.my-button--small.is-circle {
+  width: var(--my-button-size);
+  padding: 5px;
 }
