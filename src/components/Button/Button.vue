@@ -13,7 +13,7 @@
     }"
   >
     <Icon
-      icon="spinner"
+      :icon="loadingIcon"
       v-if="loading"
       spin
     >
@@ -23,7 +23,7 @@
       v-if="icon"
     >
     </Icon>
-    <span>
+    <span v-if="$slots.default">
       <slot></slot>
     </span>
   </button>
@@ -45,6 +45,7 @@
     disabled: false,
     circle: false,
     loading: false,
+    loadingIcon: 'spinner',
   })
 
   const loading = ref(props.loading)

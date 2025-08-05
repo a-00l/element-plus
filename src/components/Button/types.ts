@@ -12,4 +12,5 @@ export interface ButtonProps {
   circle?: boolean
   icon?: string
   loading?: boolean
+  loadingIcon?: string
 }
