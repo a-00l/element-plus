@@ -73,6 +73,23 @@ th {
   }
 }
 
+.vp-doc :not(pre) > code {
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--my-fill-color-light);
+  transition:
+    color 0.25s,
+    background-color 0.5s;
+  font-size: 14px;
+  color: rgb(48, 49, 51) !important;
+}
+
+.VPDoc {
+  .container > .content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 code {
   color: #0c61c9 !important;
   background-color: #f5f7fa !important;
