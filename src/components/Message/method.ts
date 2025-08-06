@@ -7,7 +7,7 @@ const messageArray: MessasgeArray[] = reactive([])
 
 let count = 0
 // 创建message
-export const createMessage = (props: CreateMessage) => {
+const _createMessage = (props: CreateMessage) => {
   const id = `message_${count++}`
   const div = document.createElement('div')
 
@@ -19,6 +19,12 @@ export const createMessage = (props: CreateMessage) => {
 
       // 卸载dom
       render(null, div)
+    }
+  }
+
+  if (typeof props === 'string') {
+    props = {
+      message: props
     }
   }
 
@@ -62,3 +68,32 @@ export const deleteMessage = (id: string) => {
 }
 
 export const addIndex = () => 1000 + count
+
+type MessageType = 'primary' | 'success' | 'warning' | 'error' | 'info'
+
+const createTypedMessage = (type: MessageType) => {
+  return (msg: string) => {
+    _createMessage({
+      message: msg,
+      type
+    })
+  }
+}
+
+_createMessage.primary = createTypedMessage('primary')
+_createMessage.success = createTypedMessage('success')
+_createMessage.warning = createTypedMessage('warning')
+_createMessage.error = createTypedMessage('error')
+_createMessage.info = createTypedMessage('info')
+
+// 类型声明补充（可选）
+interface CreateMessageFunc {
+  (props: CreateMessage): void
+  primary: (msg: string) => void
+  success: (msg: string) => void
+  warning: (msg: string) => void
+  error: (msg: string) => void
+  info: (msg: string) => void
+}
+
+export const createMessage: CreateMessageFunc = _createMessage as CreateMessageFunc
