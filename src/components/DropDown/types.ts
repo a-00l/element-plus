@@ -33,6 +33,7 @@ export interface DropdownItemProps {
 export interface DropdownContext {
   command: (command: commandType) => void;
   visible: Ref<boolean>;
+  hideOnClick: boolean;
 }
 
 export const DropdownSymbolKey = Symbol('Dropdown')

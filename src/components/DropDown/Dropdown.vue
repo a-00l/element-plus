@@ -9,6 +9,7 @@
       v-model:visible="visible"
       :hideAfter="hideTimeout"
       :showAfter="showTimeout"
+      :virtualTriggering="!hideOnClick"
     >
       <slot></slot>
       <template #content>
@@ -24,16 +25,18 @@
   import {
     DropdownSymbolKey,
     type commandType,
+    type DropdownContext,
     type DropdownEmits,
     type DropdownInstance,
     type DropdownProps,
   } from './types'
   import { provide, ref, watch } from 'vue'
 
-  withDefaults(defineProps<DropdownProps>(), {
+  const props = withDefaults(defineProps<DropdownProps>(), {
     trigger: 'hover',
     showTimeout: 150,
     hideTimeout: 150,
+    hideOnClick: true,
   })
 
   const tooltipRef = ref<TooltipInstance>()
@@ -47,9 +50,10 @@
     emits('command', command)
   }
 
-  provide(DropdownSymbolKey, {
+  provide<DropdownContext>(DropdownSymbolKey, {
     command,
     visible,
+    hideOnClick: props.hideOnClick,
   })
 
   defineExpose<DropdownInstance>({

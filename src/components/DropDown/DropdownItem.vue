@@ -30,7 +30,11 @@
   const handleclick = (command: commandType) => {
     if (props.disabled) return
 
-    dropdown.visible.value = false
+    // 点击后不隐藏
+    if (dropdown.hideOnClick) {
+      dropdown.visible.value = false
+    }
+
     dropdown.command(command)
   }
 </script>
