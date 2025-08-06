@@ -1,4 +1,5 @@
 import type { ComputedPlacement, Options } from "@popperjs/core";
+import type { Ref } from "vue";
 
 export type commandType = string | number | object | undefined
 
@@ -9,6 +10,7 @@ export interface DropdownProps {
   popperOptions?: Partial<Options>;
   showTimeout?: number;
   hideTimeout?: number;
+  hideOnClick?: boolean;
 }
 
 export interface DropdownInstance {
@@ -29,7 +31,8 @@ export interface DropdownItemProps {
 }
 
 export interface DropdownContext {
-  command: (command: commandType) => void
+  command: (command: commandType) => void;
+  visible: Ref<boolean>;
 }
 
 export const DropdownSymbolKey = Symbol('Dropdown')

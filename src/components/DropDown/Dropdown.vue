@@ -47,7 +47,11 @@
     emits('command', command)
   }
 
-  provide(DropdownSymbolKey, { command })
+  provide(DropdownSymbolKey, {
+    command,
+    visible,
+  })
+
   defineExpose<DropdownInstance>({
     handleOpen: () => tooltipRef.value?.show(),
     handleClose: () => tooltipRef.value?.hide(),

@@ -28,6 +28,9 @@
 
   const dropdown = inject(DropdownSymbolKey) as DropdownContext
   const handleclick = (command: commandType) => {
+    if (props.disabled) return
+
+    dropdown.visible.value = false
     dropdown.command(command)
   }
 </script>
