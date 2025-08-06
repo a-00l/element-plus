@@ -1,6 +1,7 @@
 <template>
   <div class="my-dropdown">
     <Tooltip
+      ref="tooltipRef"
       :placement="placement"
       :trigger="trigger"
       :popperOptions="popperOptions"
@@ -19,10 +20,12 @@
 
 <script setup lang="ts">
   import Tooltip from '../Tooltip/Tooltip.vue'
+  import type { TooltipInstance } from '../Tooltip/types'
   import {
     DropdownSymbolKey,
     type commandType,
     type DropdownEmits,
+    type DropdownInstance,
     type DropdownProps,
   } from './types'
   import { provide, ref, watch } from 'vue'
@@ -33,6 +36,7 @@
     hideTimeout: 150,
   })
 
+  const tooltipRef = ref<TooltipInstance>()
   const emits = defineEmits<DropdownEmits>()
   const visible = ref(false)
   watch(visible, (val) => {
@@ -44,4 +48,8 @@
   }
 
   provide(DropdownSymbolKey, { command })
+  defineExpose<DropdownInstance>({
+    handleOpen: () => tooltipRef.value?.show(),
+    handleClose: () => tooltipRef.value?.hide(),
+  })
 </script>

@@ -11,6 +11,11 @@ export interface DropdownProps {
   hideTimeout?: number;
 }
 
+export interface DropdownInstance {
+  handleOpen: () => void
+  handleClose: () => void
+}
+
 export interface DropdownEmits {
   (e: 'command', command: any): void;
   (e: 'visible-change', value: boolean): void;
