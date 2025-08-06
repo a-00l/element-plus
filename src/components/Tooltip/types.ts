@@ -10,6 +10,7 @@ export interface TooltipProps {
   showAfter?: number;
   hideAfter?: number;
   transition?: string;
+  virtualTriggering?: boolean;
 }
 
 export interface TooltipEmits {

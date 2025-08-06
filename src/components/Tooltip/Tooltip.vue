@@ -129,12 +129,12 @@
     if (props.trigger === 'hover') {
       eventTrigger['mouseenter'] = showFinal
       eventTrigger['mouseleave'] = hideFinal
-    } else {
+    } else if (props.trigger === 'click' && !props.virtualTriggering) {
       eventTrigger['click'] = toggleFinal
     }
   })
 
-  if (props.trigger === 'click') {
+  if (props.trigger === 'click' && !props.virtualTriggering) {
     // 点击外部元素，隐藏提示框
     useClickOutside(parentRef, () => {
       if (isPopper.value) {
