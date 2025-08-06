@@ -19,7 +19,7 @@ export interface DropdownInstance {
 }
 
 export interface DropdownEmits {
-  (e: 'command', command: any): void;
+  (e: 'command', command: commandType): void;
   (e: 'visible-change', value: boolean): void;
 
 }
