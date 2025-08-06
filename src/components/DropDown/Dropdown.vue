@@ -6,6 +6,8 @@
       :popperOptions="popperOptions"
       effect="light"
       v-model:visible="visible"
+      :hideAfter="hideTimeout"
+      :showAfter="showTimeout"
     >
       <slot></slot>
       <template #content>
@@ -27,6 +29,8 @@
 
   withDefaults(defineProps<DropdownProps>(), {
     trigger: 'hover',
+    showTimeout: 150,
+    hideTimeout: 150,
   })
 
   const emits = defineEmits<DropdownEmits>()

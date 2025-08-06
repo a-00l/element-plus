@@ -7,6 +7,8 @@ export interface DropdownProps {
   trigger?: 'hover' | 'click';
   disabled?: boolean;
   popperOptions?: Partial<Options>;
+  showTimeout?: number;
+  hideTimeout?: number;
 }
 
 export interface DropdownEmits {
