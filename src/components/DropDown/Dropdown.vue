@@ -26,7 +26,7 @@
   import { provide, ref, watch } from 'vue'
 
   withDefaults(defineProps<DropdownProps>(), {
-    trigger: 'click',
+    trigger: 'hover',
   })
 
   const emits = defineEmits<DropdownEmits>()
