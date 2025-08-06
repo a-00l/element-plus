@@ -147,6 +147,8 @@
   defineExpose<TooltipInstance>({
     show,
     hide,
+    popperRef,
+    triggerRef,
   })
 </script>
 

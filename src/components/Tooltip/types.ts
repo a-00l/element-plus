@@ -1,4 +1,5 @@
 import type { ComputedPlacement, Options } from "@popperjs/core"
+import type { Ref } from "vue";
 
 export interface TooltipProps {
   visible?: boolean;
@@ -20,5 +21,7 @@ export interface TooltipEmits {
 export interface TooltipInstance {
   show: () => void;
   hide: () => void;
+  triggerRef: Ref<HTMLElement | undefined>;
+  popperRef: Ref<HTMLElement | undefined>
 }
 
