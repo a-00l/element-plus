@@ -1,6 +1,7 @@
 import { h, reactive, render } from "vue";
 import type { CreateMessage, MessageArray } from "./types";
 import Message from "./Message.vue";
+import { app } from "@/main";
 
 const messageArray: MessageArray[] = reactive([])
 
@@ -36,8 +37,9 @@ const _createMessage = (props: CreateMessage, appContext?: any) => {
 
   // 创建虚拟节点
   const VNode = h(Message, newProps)
-  VNode.appContext = appContext
 
+  // 处理一开始挂载全局组件，未初始化就调用的情况
+  VNode.appContext = appContext ?? app._context
   // 渲染为真实节点
   render(VNode, div)
   const instance = {
