@@ -13,7 +13,7 @@ export interface MessageProps {
   plain?: boolean;
 }
 
-export interface MessasgeArray {
+export interface MessageArray {
   id: string;
   props: MessageProps;
   vm: ComponentInternalInstance;

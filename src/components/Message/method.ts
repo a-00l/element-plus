@@ -1,13 +1,12 @@
 import { h, reactive, render } from "vue";
-import type { CreateMessage, MessasgeArray } from "./types";
+import type { CreateMessage, MessageArray } from "./types";
 import Message from "./Message.vue";
-import { app } from "@/main";
 
-const messageArray: MessasgeArray[] = reactive([])
+const messageArray: MessageArray[] = reactive([])
 
 let count = 0
 // 创建message
-const _createMessage = (props: CreateMessage) => {
+const _createMessage = (props: CreateMessage, appContext?: any) => {
   const id = `message_${count++}`
   const div = document.createElement('div')
 
@@ -37,7 +36,7 @@ const _createMessage = (props: CreateMessage) => {
 
   // 创建虚拟节点
   const VNode = h(Message, newProps)
-  VNode.appContext = app._context
+  VNode.appContext = appContext
 
   // 渲染为真实节点
   render(VNode, div)
@@ -88,7 +87,7 @@ _createMessage.info = createTypedMessage('info')
 
 // 类型声明补充（可选）
 interface CreateMessageFunc {
-  (props: CreateMessage): void
+  (props: CreateMessage, appContext?: any): void
   primary: (msg: string) => void
   success: (msg: string) => void
   warning: (msg: string) => void

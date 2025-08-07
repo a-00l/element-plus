@@ -16,7 +16,7 @@ library.add(fas, far, fab)
 export const app = createApp(App)
 
 // 挂载全局方法
-app.config.globalProperties.$message = createMessage
+app.config.globalProperties.$message = (props: any) => createMessage(props, app._context)
 
 app
   .component('font-awesome-icon', FontAwesomeIcon)
