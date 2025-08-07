@@ -9,6 +9,7 @@
       :class="{
         [`my-message--${type}`]: type,
         'is-close': showClose,
+        'is-plain': plain,
       }"
       v-if="visible"
       @mouseenter="clear"

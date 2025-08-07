@@ -38,6 +38,12 @@
     padding-right: 30px;
   }
 
+  &.is-plain {
+    background-color: var(--my-bg-color-overlay);
+    box-shadow: var(--my-box-shadow-light);
+    border-color: var(--my-bg-color-overlay);
+  }
+
   .my-message__close {
     display: flex;
     align-items: center;
@@ -57,15 +63,6 @@
   &.fade-up-leave-to {
     top: 0;
   }
-  // &.fade-up-enter-from {
-  //   opacity: 0;
-  //   transform: translate(-50%, -100%);
-  // }
-
-  // &.fade-up-leave-active {
-  //   top: 0; // 过渡到 top 值为 0
-  //   opacity: 0; // 同时透明度变为 0
-  // }
 }
 
 @each $val in info, success, warning, primary, error {
@@ -75,6 +72,10 @@
     --my-message-text-color: var(--my-color-#{$val});
     .my-message__close {
       --my-icon-color: var(--my-color-#{$val});
+    }
+
+    .my-message__content {
+      color: var(--my-message-text-color);
     }
   }
 }

@@ -9,7 +9,8 @@ export interface MessageProps {
   close?: () => void
   offset?: number
   destroy: (id: string) => void;
-  zIndex?: number
+  zIndex?: number;
+  plain?: boolean;
 }
 
 export interface MessasgeArray {
