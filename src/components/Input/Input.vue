@@ -9,6 +9,7 @@
       'my-input-group--append': $slots.append,
       'is-suffix': $slots.suffix,
     }"
+    v-bind="$attrs"
   >
     <!-- input -->
     <template v-if="type === 'text'">
