@@ -9,10 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import { createMessage } from './components/Message/method'
 
 library.add(fas, far, fab)
 
 export const app = createApp(App)
+
+// 挂载全局方法
+app.config.globalProperties.$message = createMessage
 
 app
   .component('font-awesome-icon', FontAwesomeIcon)
