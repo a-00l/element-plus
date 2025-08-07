@@ -6,17 +6,17 @@
   </my-button>
   <my-button
     :plain="true"
-    @click="open2"
+    @click="open1"
     >Success
   </my-button>
   <my-button
     :plain="true"
-    @click="open3"
+    @click="open2"
     >Warning
   </my-button>
   <my-button
     :plain="true"
-    @click="open1"
+    @click="open3"
     >Info
   </my-button>
   <my-button
@@ -31,24 +31,38 @@
   import { createMessage } from '@/components/Message/method.ts'
 
   const open1 = () => {
-    createMessage('This is a info message.')
-  }
-  const open2 = () => {
     createMessage({
       message: 'Congrats, this is a success message.',
       type: 'success',
+      plain: true,
+    })
+  }
+  const open2 = () => {
+    createMessage({
+      message: 'Warning, this is a warning message.',
+      type: 'warning',
+      plain: true,
     })
   }
   const open3 = () => {
     createMessage({
-      message: 'Warning, this is a warning message.',
-      type: 'warning',
+      message: 'This is a info message.',
+      type: 'info',
+      plain: true,
     })
   }
   const open4 = () => {
-    createMessage.error('Oops, this is a error message.')
+    createMessage({
+      message: 'Oops, this is a error message.',
+      type: 'error',
+      plain: true,
+    })
   }
   const open5 = () => {
-    createMessage.primary('This is a primary message.')
+    createMessage({
+      message: 'This is a primary message.',
+      type: 'primary',
+      plain: true,
+    })
   }
 </script>
