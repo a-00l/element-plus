@@ -10,6 +10,8 @@
       'is-suffix': $slots.suffix,
     }"
     v-bind="$attrs"
+    @mouseenter="isHover = true"
+    @mouseleave="isHover = false"
   >
     <!-- input -->
     <template v-if="type === 'text'">
@@ -38,7 +40,7 @@
           </span>
         </span>
         <input
-          v-bind="$attrs"
+          v-on="$attrs"
           ref="inputRef"
           :type="inputType"
           class="my-input__inner"
@@ -112,7 +114,7 @@
           @focus="handleFocus"
           @blur="handleBlur"
           @keydown.enter="emits('change', modelInput)"
-          v-bind="$attrs"
+          v-on="$attrs"
           class="my-textarea__inner"
           :disabled="disabled || formItem?.disabled"
           :placeholder="placeholder"
@@ -145,9 +147,12 @@
   const inputType = ref(props.type)
   const inputRef = ref<HTMLInputElement>()
 
-  // 控制清空按钮显示
   const isClearable = computed(
-    () => modelInput.value?.toString().length > 0 && props.clearable && props.disabled,
+    () =>
+      modelInput.value?.toString().length > 0 &&
+      props.clearable &&
+      !props.disabled &&
+      (isFocus.value || isHover.value),
   )
 
   // 控制密码显示
@@ -158,9 +163,10 @@
       props.type !== 'textarea' &&
       isShowPwd.value &&
       props.showPassword &&
-      props.disabled,
+      !props.disabled,
   )
 
+  const isHover = ref(false)
   const isFocus = ref(false)
   // 获得焦点
   const handleFocus = () => {
