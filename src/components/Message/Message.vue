@@ -18,7 +18,7 @@
       :style="cssStyle"
     >
       <div class="my-message__content">
-        {{ message }}
+        <VNodeRender :message="message" />
       </div>
       <div
         class="my-message__close"
@@ -32,9 +32,10 @@
 </template>
 
 <script setup lang="ts">
+  import VNodeRender from '@/utils/VNodeRender'
   import type { MessageProps } from './types'
   import Icon from '../Icon/Icon.vue'
-  import { computed, nextTick, onMounted, ref } from 'vue'
+  import { computed, onMounted, ref } from 'vue'
   import { deleteMessage, getBottomOffset } from './method'
   const props = withDefaults(defineProps<MessageProps>(), {
     type: 'info',
