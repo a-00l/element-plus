@@ -1,9 +1,20 @@
 <template>
   <button @click="handleClick">click</button>
+  <myInput
+    v-model="input"
+    placeholder="Please input"
+    maxlength="240"
+  >
+  </myInput>
 </template>
 
 <script lang="ts">
+  import myInput from '@/components/Input/Input.vue'
+  import { ref } from 'vue'
   export default {
+    components: {
+      myInput,
+    },
     methods: {
       handleClick() {
         this.$message({
@@ -15,6 +26,12 @@
           },
         })
       },
+    },
+    setup() {
+      const input = ref('')
+      return {
+        input,
+      }
     },
   }
 </script>
