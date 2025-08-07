@@ -35,7 +35,7 @@
   import VNodeRender from '@/utils/VNodeRender'
   import type { MessageProps } from './types'
   import Icon from '../Icon/Icon.vue'
-  import { computed, onMounted, ref } from 'vue'
+  import { computed, onMounted, ref, watch } from 'vue'
   import { deleteMessage, getBottomOffset } from './method'
   const props = withDefaults(defineProps<MessageProps>(), {
     type: 'info',
@@ -95,6 +95,13 @@
     // 删除对应message，重新触发动画
     deleteMessage(props.id)
   }
+
+  watch(visible, (newVal) => {
+    if (!newVal) {
+      // 删除message，回调函数
+      props.close ? props.close() : ''
+    }
+  })
 
   onMounted(async () => {
     visible.value = true

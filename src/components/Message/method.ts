@@ -19,6 +19,8 @@ const _createMessage = (props: CreateMessage, appContext?: any) => {
 
       // 卸载dom
       render(null, div)
+      // 删除message，回调函数
+      props.close ? props.close() : ''
     }
   }
 
@@ -50,6 +52,12 @@ const _createMessage = (props: CreateMessage, appContext?: any) => {
 
   messageArray.push(instance)
   document.body.appendChild(div.firstChild!)
+
+  return {
+    close: () => {
+      onDestroy(id)
+    }
+  }
 }
 
 export const getBottomOffset = (id: string) => {
