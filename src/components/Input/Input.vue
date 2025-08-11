@@ -2,7 +2,7 @@
   <div
     class="my-input"
     :class="{
-      [`my-input-${size}`]: size,
+      [`my-input--${size}`]: size,
       'is-disabled': disabled || formItem?.disabled,
       'my-input-group': $slots.append || $slots.prepend,
       'my-input-group--prepend': $slots.prepend,
@@ -119,6 +119,7 @@
           class="my-textarea__inner"
           :disabled="disabled || formItem?.disabled"
           :placeholder="placeholder"
+          :rows="rows"
           name="textarea"
         ></textarea>
       </div>

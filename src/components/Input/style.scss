@@ -259,9 +259,20 @@
 }
 
 .my-input--small {
-  --my-input-inner-height: calc(var(--my-input-height, 24px) - 2px);
+  --my-input-height: calc(var(--my-input-height, 24px) - 2px);
+}
+
+.my-input--small {
+  --my-input-height: var(--my-component-size-small);
+  font-size: 12px;
+}
+
+.my-input--large {
+  --my-input-height: calc(var(--my-input-height, 40px) - 2px);
 }
 
 .my-input--large {
   --my-input-inner-height: calc(var(--my-input-height, 40px) - 2px);
+  --my-input-height: var(--my-component-size-large);
+  font-size: 14px;
 }

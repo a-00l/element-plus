@@ -10,6 +10,7 @@ export interface InputProps {
   prefixIcon?: string;
   suffixIcon?: string;
   placeholder?: string;
+  rows?: number;
 }
 
 export interface InputEmits {
