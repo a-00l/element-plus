@@ -2,7 +2,7 @@
   <li
     class="my-select__menu-item"
     :class="{
-      'is-disable': disabled,
+      'is-disabled': disabled,
       'is-selected': value === stateSelect.inputValue,
     }"
     @click.stop="handleClick"
