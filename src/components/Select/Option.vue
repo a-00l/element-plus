@@ -3,7 +3,7 @@
     class="my-select__menu-item"
     :class="{
       'is-disabled': disabled,
-      'is-selected': value === stateSelect.inputValue,
+      'is-selected': value === stateSelect.selectOption.value,
     }"
     @click.stop="handleClick"
     v-show="isMatch"
