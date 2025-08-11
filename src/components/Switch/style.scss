@@ -87,19 +87,6 @@
     }
   }
 
-  .my-switch--large {
-    .my-switch__label {
-      height: 24px;
-      font-size: 14px;
-    }
-
-    .my-switch--small {
-      font-size: 12px;
-      line-height: 16px;
-      height: 24px;
-    }
-  }
-
   .my-switch__label--left {
     margin-right: 10px;
   }
@@ -130,6 +117,45 @@
       .my-switch__inner {
         padding: 0 18px 0 4px;
       }
+    }
+  }
+}
+
+.my-switch--large {
+  font-size: 14px;
+  height: 40px;
+
+  .my-switch__label {
+    height: 24px;
+    font-size: 14px;
+  }
+
+  .my-switch__core {
+    min-width: 50px;
+    height: 24px;
+    border-radius: 12px;
+    .my-switch__action {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.my-switch--small {
+  font-size: 12px;
+  height: 24px;
+
+  .my-switch__label {
+    font-size: 12px;
+  }
+
+  .my-switch__core {
+    min-width: 30px;
+    height: 16px;
+    border-radius: 8px;
+    .my-switch__action {
+      width: 12px;
+      height: 12px;
     }
   }
 }
