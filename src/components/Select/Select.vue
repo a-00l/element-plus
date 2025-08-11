@@ -50,7 +50,7 @@
 
 <script setup lang="ts">
   import Icon from '../Icon/Icon.vue'
-  import { computed, provide, reactive, ref } from 'vue'
+  import { computed, provide, reactive, ref, watch } from 'vue'
   import Input from '../Input/Input.vue'
   import Tooltip from '../Tooltip/Tooltip.vue'
   import { SelectContexKey, type SelectEmits, type SelectProps, type StateSelect } from './types'
@@ -96,6 +96,14 @@
   })
   // 记录下拉菜单显示与否
   const isActive = ref()
+  watch(isActive, (newVal) => {
+    if (newVal) {
+      const mockEvent = { target: { value: '' } } as unknown as Event
+
+      search(mockEvent)
+    }
+  })
+
   // 搜索框中的值
   const searchValue = ref('')
   const search = (e: Event) => {
