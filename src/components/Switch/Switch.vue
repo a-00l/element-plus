@@ -2,7 +2,7 @@
   <div
     class="my-switch"
     :class="{
-      'is-checked': switchToggle,
+      'is-checked': switchToggle === props.activeValue ? true : false,
       'is-disabled': disabled || formItem?.disabled,
       [`my-switch--${size}`]: size,
     }"
@@ -61,6 +61,7 @@
 
   const emits = defineEmits<SwitchEmits>()
   const switchToggle = ref(props.inactiveValue)
+
   // 切换switch
   const toggleSwitch = () => {
     if (props.disabled || formItem?.disabled) return
