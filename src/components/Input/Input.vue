@@ -33,6 +33,7 @@
         >
           <span class="my-input__prefix-inner">
             <Icon
+              v-if="prefixIcon"
               :icon="prefixIcon!"
               class="my-input__icon"
             ></Icon>
