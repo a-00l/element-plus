@@ -19,7 +19,6 @@
           :placeholder="setPlaceholder || placeholder"
           :disabled="disabled"
           :readonly="!filterable"
-          clearable
           @input="search"
         >
           <template #suffix>
