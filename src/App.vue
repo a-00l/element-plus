@@ -1,11 +1,13 @@
 <template>
-  <button @click="handleClick">click</button>
-  <myInput
-    v-model="input"
-    placeholder="Please input"
-    maxlength="240"
-  >
-  </myInput>
+  <div>
+    <button @click="handleClick">click</button>
+    <myInput
+      v-model="input"
+      placeholder="Please input"
+      maxlength="240"
+    >
+    </myInput>
+  </div>
 </template>
 
 <script lang="ts">
