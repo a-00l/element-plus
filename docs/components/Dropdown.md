@@ -38,12 +38,11 @@ description: 下拉菜单组件
 ## 指令事件
 
 点击菜单项后会触发事件，用户可以通过相应的菜单项 key 进行不同的操作。
-
 <preview path="../common/Dropdown/DropdownEvent.vue"></preview>
 
 ## Dropdown API
 
-### Dropdown Attributes
+## Dropdown Attributes
 
 | 属性名        | 说明                 | 类型               | Default |
 | ------------- | -------------------- | ------------------ | ------- |
@@ -62,14 +61,14 @@ description: 下拉菜单组件
 | default  | 下拉菜单的内容。 注意：必须是有效的 html DOM 元素（例如 `<span>、<button>` 等）或 组件，以附加监听触发器 | —             |
 | dropdown | 下拉菜单内容                                                                                             | Dropdown-Menu |
 
-### Dropdown Events
+## Dropdown Events
 
 | 事件名         | 说明                    | 类型                           |
 | -------------- | ----------------------- | ------------------------------ |
 | command        | 点击菜单项触发          | `(command: commandType) => ()` |
 | visible-change | 下拉菜单出现/隐藏时触发 | `(visible: boolean) => ()`     |
 
-### Dropdown Exposes
+## Dropdown Exposes
 
 | 方法名      | 说明         | Type         |
 | ----------- | ------------ | ------------ |
@@ -78,7 +77,7 @@ description: 下拉菜单组件
 
 ## Dropdown-Menu API
 
-### Dropdown-Menu Slots
+## Dropdown-Menu Slots
 
 | 插槽名  | 说明           | 子标签        |
 | ------- | -------------- | ------------- |
@@ -86,7 +85,7 @@ description: 下拉菜单组件
 
 ## Dropdown-Item API
 
-### Dropdown-Item Attributes
+## Dropdown-Item Attributes
 
 | 属性名   | 说明                              | Type                           | 默认值 |
 | -------- | --------------------------------- | ------------------------------ | ------ |
@@ -94,7 +93,7 @@ description: 下拉菜单组件
 | disabled | 是否禁用                          | `boolean`                      | false  |
 | divided  | 是否显示分隔符                    | `boolean`                      | false  |
 
-### Dropdown-Item Slots
+## Dropdown-Item Slots
 
 | 插槽名  | 说明                    |
 | ------- | ----------------------- |

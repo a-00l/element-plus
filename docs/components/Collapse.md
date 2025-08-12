@@ -27,20 +27,20 @@ description: 折叠组件
 
 ## Collapse API
 
-### Collapse Attributes
+## Collapse Attributes
 
 | 属性名                | 详情                                                                | 类型               | 默认值 |
 | --------------------- | ------------------------------------------------------------------- | ------------------ | ------ |
 | model-value / v-model | 当前活动面板，在手风琴模式下其类型是`string`，在其他模式下是`array` | `string` / `array` | []     |
 | accordion             | 是否手风琴模式                                                      | `boolean`          | false  |
 
-### Collapse Slots
+## Collapse Slots
 
 | 插槽名  | Description    | 子标签        |
 | ------- | -------------- | ------------- |
 | default | 自定义默认内容 | Collapse Item |
 
-### Collapse Exposes
+## Collapse Exposes
 
 | 属性名         | 说明               | 类型                     |
 | -------------- | ------------------ | ------------------------ |
@@ -49,7 +49,7 @@ description: 折叠组件
 
 ## Collapse Item API
 
-### Collapse Item Attributes
+## Collapse Item Attributes
 
 | 属性名   | 详情           | 类型    | 默认值 |
 | -------- | -------------- | ------- | ------ |

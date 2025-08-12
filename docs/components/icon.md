@@ -62,7 +62,7 @@ app.component('font-awesome-icon', FontAwesomeIcon).mount('#app')
 
 ## API
 
-### Attributes
+## Attributes
 
 | 属性名 | 说明 | 类型                | 默认值 |
 | ------ | ---- | ------------------- | ------ |

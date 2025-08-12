@@ -10,7 +10,6 @@ description: 表单组件
 ## 基础用法
 
 基础的表单用法，包含表单验证功能。
-
 <preview path="../common/Form/FormBase.vue"></preview>
 
 ## 表单验证
@@ -18,7 +17,6 @@ description: 表单组件
 Form 组件允许你验证用户的输入是否符合规范，来帮助你找到和纠正错误。
 
 Form 组件提供了表单验证的功能，只需为 rules 属性传入约定的验证规则，并将 form-Item 的 prop 属性设置为需要验证的特殊键值即可。 校验规则参见 async-validator
-
 <preview path="../common/Form/FormValidate.vue"></preview>
 
 ## 自定义校验规则​
