@@ -20,7 +20,9 @@
     type DropdownContext,
     type DropdownItemProps,
   } from './types'
-
+  defineOptions({
+    name: 'MyDropdownItem',
+  })
   const props = withDefaults(defineProps<DropdownItemProps>(), {
     disabled: false,
     divided: false,

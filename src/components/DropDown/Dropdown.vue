@@ -31,6 +31,9 @@
     type DropdownProps,
   } from './types'
   import { provide, ref, watch } from 'vue'
+  defineOptions({
+    name: 'MyDropdown',
+  })
 
   const props = withDefaults(defineProps<DropdownProps>(), {
     trigger: 'hover',

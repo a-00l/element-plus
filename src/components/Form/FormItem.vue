@@ -39,6 +39,9 @@
     type FormItemProps,
   } from './types'
   import { inject, onMounted, provide, ref } from 'vue'
+  defineOptions({
+    name: 'MyFormItem',
+  })
 
   const props = defineProps<FormItemProps>()
   const formContext = inject(FormContextKey) as FormContext

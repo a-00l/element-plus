@@ -37,6 +37,10 @@
   import Icon from '../Icon/Icon.vue'
   import { computed, onMounted, ref, watch } from 'vue'
   import { deleteMessage, getBottomOffset } from './method'
+  defineOptions({
+    name: 'MyMessage',
+  })
+
   const props = withDefaults(defineProps<MessageProps>(), {
     type: 'info',
     showClose: false,

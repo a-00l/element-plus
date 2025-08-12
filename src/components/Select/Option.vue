@@ -18,6 +18,9 @@
   import { inject, onMounted, ref, watchEffect } from 'vue'
   import { addOption } from './method'
   import { SelectContexKey, type OptionProps, type SelectContext } from './types'
+  defineOptions({
+    name: 'MyOption',
+  })
 
   const props = withDefaults(defineProps<OptionProps>(), {
     disabled: false,

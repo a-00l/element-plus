@@ -51,6 +51,9 @@
   import { computed, inject, ref, watch } from 'vue'
   import type { SwitchEmits, SwitchProps } from './types'
   import { FormItemContextKey } from '../Form/types'
+  defineOptions({
+    name: 'MySwitch',
+  })
 
   const formItem = inject(FormItemContextKey)
 

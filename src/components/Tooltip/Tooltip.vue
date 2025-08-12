@@ -41,6 +41,9 @@
   import { nextTick, onMounted, reactive, ref, watch } from 'vue'
   import { debounce } from '../../utils/debounce'
   import { useClickOutside } from '../../hooks/useClickOutside'
+  defineOptions({
+    name: 'MyTooltip',
+  })
 
   const props = withDefaults(defineProps<TooltipProps>(), {
     placement: 'bottom',

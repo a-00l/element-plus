@@ -4,6 +4,10 @@
   </ul>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineOptions({
+    name: 'MyDropdownMenu',
+  })
+</script>
 
 <style scoped></style>

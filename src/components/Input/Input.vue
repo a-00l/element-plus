@@ -136,6 +136,7 @@
 
   defineOptions({
     inheritAttrs: false,
+    name: 'MyInput',
   })
 
   const formItem = inject(FormItemContextKey)

@@ -14,6 +14,10 @@
     type NameType,
   } from './types'
 
+  defineOptions({
+    name: 'MyCollapse',
+  })
+
   const props = defineProps<CollapseProps>()
   const emits = defineEmits<CollapseEmits>()
   // 记录打开的name

@@ -67,6 +67,9 @@
     type StateSelect,
   } from './types'
   import { findOption } from './method'
+  defineOptions({
+    name: 'MySelect',
+  })
 
   const sameWidth: any = {
     modifiers: [

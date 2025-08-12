@@ -15,6 +15,7 @@
 <script setup lang="ts">
   defineOptions({
     inheritAttrs: false,
+    name: 'MyIcon',
   })
   import { computed } from 'vue'
   import type { IconProps } from './types'

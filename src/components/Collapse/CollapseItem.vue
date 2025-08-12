@@ -41,6 +41,9 @@
   import { computed, inject, ref } from 'vue'
   import Icon from '../Icon/Icon.vue'
   import { CollapseContextKey, type CollapseItemProps } from './types'
+  defineOptions({
+    name: 'MyCollapseItem',
+  })
 
   const props = defineProps<CollapseItemProps>()
   // 获取Collapse组件的方法

@@ -14,6 +14,9 @@
     type FormProps,
   } from './types'
   import type { ValidateFieldsError } from 'async-validator'
+  defineOptions({
+    name: 'MyForm',
+  })
 
   const props = withDefaults(defineProps<FormProps>(), {
     disabled: undefined,
