@@ -42,6 +42,12 @@
       <template #content>
         <ul class="my-select__menu">
           <slot></slot>
+          <div
+            class="my-select__empty"
+            v-if="options.length === 0"
+          >
+            No Date
+          </div>
         </ul>
       </template>
     </Tooltip>
@@ -50,10 +56,17 @@
 
 <script setup lang="ts">
   import Icon from '../Icon/Icon.vue'
-  import { computed, provide, reactive, ref, watch } from 'vue'
+  import { computed, onMounted, provide, reactive, ref, watch } from 'vue'
   import Input from '../Input/Input.vue'
   import Tooltip from '../Tooltip/Tooltip.vue'
-  import { SelectContexKey, type SelectEmits, type SelectProps, type StateSelect } from './types'
+  import {
+    SelectContexKey,
+    type OptionProps,
+    type SelectEmits,
+    type SelectProps,
+    type StateSelect,
+  } from './types'
+  import { findOption } from './method'
 
   const sameWidth: any = {
     modifiers: [
@@ -106,14 +119,52 @@
 
   // 搜索框中的值
   const searchValue = ref('')
-  const search = (e: Event) => {
-    if (!props.filterable) return
+  const options = ref<OptionProps[]>([])
 
+  const search = async (e: Event) => {
+    if (!props.filterable) return
+    debugger
     const target = e.target as HTMLInputElement
     // 用来记录搜索框中的值
     searchValue.value = target.value
+
+    // 未开启搜索功能
+    if (searchValue.value.trim() === '') {
+      return
+    }
+
+    searchMethod()
   }
 
+  const searchMethod = async () => {
+    // 如果自定义了过滤方法，则用该方法
+    if (typeof props.filterMethod === 'function') {
+      // 清空原有的 options
+      options.value = []
+      const newOptions = props.filterMethod(searchValue.value)
+      options.value.push(...newOptions)
+    }
+    // 如果自定义了远程搜索方法，则用该方法
+    else if (typeof props.remoteMethod === 'function' && props.remote) {
+      try {
+        // 清空原有的 options
+        options.value = []
+        const newOptions = await props.remoteMethod(searchValue.value)
+
+        options.value.push(...newOptions)
+      } catch (error) {
+        console.log('远程搜索失败', error)
+        return
+      }
+    }
+    // 默认搜索方法
+    else {
+      // 清空原有的 options
+      options.value = []
+      const newOptions = findOption(searchValue.value)
+      options.value.push(...newOptions)
+    }
+  }
   const clear = () => {
     // 清空select选择状态
     stateSelect.inputValue = ''
@@ -142,13 +193,15 @@
     return label || props.placeholder
   })
 
+  onMounted(() => {
+    searchMethod()
+  })
+
   provide(SelectContexKey, {
-    searchValue,
     emits,
     popper: popperRef,
+    searchValue,
     stateSelect,
-    filterMethod: props.filterMethod,
-    remote: props.remote,
-    remoteMethod: props.remoteMethod,
+    options,
   })
 </script>
