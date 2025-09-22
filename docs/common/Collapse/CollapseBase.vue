@@ -56,8 +56,6 @@
 </template>
 
 <script setup>
-  import myCollapse from '@/components/Collapse/Collapse.vue'
-  import myCollapseItem from '@/components/Collapse/CollapseItem.vue'
   import { ref } from 'vue'
 
   const activeName = ref(['1'])

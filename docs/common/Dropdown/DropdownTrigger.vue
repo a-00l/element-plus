@@ -52,11 +52,7 @@
   </my-row>
 </template>
 
-<script setup>
-  import myDropdown from '@/components/Dropdown/Dropdown.vue'
-  import myDropdownItem from '@/components/Dropdown/DropdownItem.vue'
-  import myDropdownMenu from '@/components/Dropdown/DropdownMenu.vue'
-</script>
+<script setup></script>
 <style scoped>
   .block-col-2 {
     display: flex;

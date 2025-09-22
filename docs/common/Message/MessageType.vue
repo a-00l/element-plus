@@ -27,7 +27,6 @@
 </template>
 
 <script setup>
-  import myButton from '@/components/Button/Button.vue'
   import { createMessage } from '@/components/Message/method.ts'
 
   const open1 = () => {

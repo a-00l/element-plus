@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-  import myButton from '@/components/Button/Button.vue'
   import { createMessage } from '@/components/Message/method.ts'
   import { h } from 'vue'
 

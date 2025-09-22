@@ -46,11 +46,6 @@
 
 <script setup>
   import { reactive, ref } from 'vue'
-  import myButton from '@/components/Button/Button.vue'
-  import myForm from '@/components/Form/Form.vue'
-  import myFormItem from '@/components/Form/FormItem.vue'
-  import myInput from '@/components/Input/Input.vue'
-
   const formRef = ref()
   const ruleForm = reactive({
     pass: '',

@@ -21,12 +21,6 @@
   </my-dropdown>
 </template>
 
-<script setup>
-  import myDropdown from '@/components/Dropdown/Dropdown.vue'
-  import myDropdownItem from '@/components/Dropdown/DropdownItem.vue'
-  import myDropdownMenu from '@/components/Dropdown/DropdownMenu.vue'
-</script>
-
 <style scoped>
   .my-dropdown-link {
     cursor: pointer;

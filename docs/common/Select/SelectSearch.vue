@@ -18,11 +18,8 @@
 
 <script setup>
   import { onMounted, ref } from 'vue'
-  import mySelect from '@/components/Select/Select.vue'
-  import myOption from '@/components/Select/Option.vue'
 
   const list = ref([])
-  const options = ref([])
   const value = ref([])
   const loading = ref(false)
 

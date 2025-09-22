@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-  import myInput from '@/components/Input/Input.vue'
   import { ref } from 'vue'
 
   const input = ref('')

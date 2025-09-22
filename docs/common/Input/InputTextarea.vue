@@ -10,7 +10,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import myInput from '@/components/Input/Input.vue'
 
   const textarea = ref('')
 </script>

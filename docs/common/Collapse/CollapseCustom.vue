@@ -55,9 +55,3 @@
     </my-collapse-item>
   </my-collapse>
 </template>
-
-<script setup>
-  import myCollapse from '@/components/Collapse/Collapse.vue'
-  import myCollapseItem from '@/components/Collapse/CollapseItem.vue'
-  import Icon from '@/components/Icon/Icon.vue'
-</script>

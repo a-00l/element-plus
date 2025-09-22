@@ -16,8 +16,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import mySelect from '@/components/Select/Select.vue'
-  import myOption from '@/components/Select/Option.vue'
   const value = ref('')
   const options = [
     {

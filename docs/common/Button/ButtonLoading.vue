@@ -22,7 +22,3 @@
     </my-button>
   </div>
 </template>
-
-<script setup>
-  import myButton from '@/components/Button/Button.vue'
-</script>

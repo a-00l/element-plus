@@ -66,7 +66,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import myInput from '@/components/Input/Input.vue'
 
   const input1 = ref('')
   const input2 = ref('')

@@ -1,103 +1,99 @@
 <template>
   <div class="mb-4">
-    <Button>Default</Button>
-    <Button type="primary"> Primary</Button>
-    <Button type="success">Success</Button>
-    <Button type="info">Info</Button>
-    <Button type="warning">Warning</Button>
-    <Button type="danger">Danger</Button>
+    <my-button>Default</my-button>
+    <my-button type="primary"> Primary</my-button>
+    <my-button type="success">Success</my-button>
+    <my-button type="info">Info</my-button>
+    <my-button type="warning">Warning</my-button>
+    <my-button type="danger">Danger</my-button>
   </div>
   <div class="mb-4">
-    <Button plain>Plain</Button>
-    <Button
+    <my-button plain>Plain</my-button>
+    <my-button
       plain
       type="primary"
     >
-      Primary</Button
+      Primary</my-button
     >
-    <Button
+    <my-button
       plain
       type="success"
-      >Success</Button
+      >Success</my-button
     >
-    <Button
+    <my-button
       plain
       type="info"
-      >Info</Button
+      >Info</my-button
     >
-    <Button
+    <my-button
       plain
       type="warning"
-      >Warning</Button
+      >Warning</my-button
     >
-    <Button
+    <my-button
       plain
       type="danger"
-      >Danger</Button
+      >Danger</my-button
     >
   </div>
   <div class="mb-4">
-    <Button>Default</Button>
-    <Button
+    <my-button>Default</my-button>
+    <my-button
       round
       type="primary"
     >
-      Round</Button
+      Round</my-button
     >
-    <Button
+    <my-button
       round
       type="success"
-      >Success</Button
+      >Success</my-button
     >
-    <Button
+    <my-button
       round
       type="info"
-      >Info</Button
+      >Info</my-button
     >
-    <Button
+    <my-button
       round
       type="warning"
-      >Warning</Button
+      >Warning</my-button
     >
-    <Button
+    <my-button
       round
       type="danger"
-      >Danger</Button
+      >Danger</my-button
     >
   </div>
   <div class="mb-4">
-    <Button
+    <my-button
       circle
       type="primary"
       icon="fa-house"
     >
-    </Button>
-    <Button
+    </my-button>
+    <my-button
       circle
       type="success"
       icon="fa-thumbs-up"
-    ></Button>
-    <Button
+    ></my-button>
+    <my-button
       circle
       type="info"
       icon="fa-headphones"
-    ></Button>
-    <Button
+    ></my-button>
+    <my-button
       circle
       type="warning"
       icon="fa-user"
-    ></Button>
-    <Button
+    ></my-button>
+    <my-button
       circle
       type="danger"
       icon="fa-comment"
-    ></Button>
+    ></my-button>
   </div>
 </template>
-
-<script setup>
-  import Button from '@/components/Button/Button.vue'
-</script>
 
 <style scoped>
   .mb-4 {

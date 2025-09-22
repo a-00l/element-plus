@@ -22,9 +22,6 @@
 </template>
 
 <script setup>
-  import myDropdown from '@/components/Dropdown/Dropdown.vue'
-  import myDropdownItem from '@/components/Dropdown/DropdownItem.vue'
-  import myDropdownMenu from '@/components/Dropdown/DropdownMenu.vue'
   import { createMessage } from '@/components/Message/method.ts'
   const handleCommand = (command) => {
     createMessage({

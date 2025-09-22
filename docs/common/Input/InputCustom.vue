@@ -85,10 +85,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import myInput from '@/components/Input/Input.vue'
-  import mySelect from '@/components/Select/Select.vue'
-  import myOption from '@/components/Select/Option.vue'
-  import myButton from '@/components/Button/Button.vue'
   const input1 = ref('')
   const input2 = ref('')
   const input3 = ref('')

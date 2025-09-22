@@ -39,8 +39,7 @@
 
 <script setup>
   import { ref } from 'vue'
-  import myInput from '@/components/Input/Input.vue'
-  import myIcon from '@/components/Icon/Icon.vue'
+
   const input1 = ref('')
   const input2 = ref('')
   const input3 = ref('')

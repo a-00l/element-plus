@@ -115,10 +115,7 @@
   </div>
 </template>
 
-<script setup>
-  import myTooltip from '@/components/Tooltip/Tooltip.vue'
-  import myButton from '@/components/Button/Button.vue'
-</script>
+<script setup></script>
 
 <style scoped>
   .tooltip-base-box {

@@ -22,7 +22,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import mySwitch from '@/components/Switch/Switch.vue'
 
   const value = ref(true)
 </script>
