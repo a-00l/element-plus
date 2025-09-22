@@ -18,5 +18,10 @@ export default {
     // 正确的全局注册方式（仅在 VitePress 主题中）
     app.component('demo-preview', ElementPlusContainer)
     app.component('font-awesome-icon', FontAwesomeIcon)
+  },
+  themeConfig: {
+    editLink: {
+      pattern: 'http://localhost:5173/components/button.html'
+    }
   }
 }

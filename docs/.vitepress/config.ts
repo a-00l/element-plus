@@ -22,23 +22,11 @@ export default defineConfig({
       md.use(componentPreview)
     }
   },
-  title: "./docs",
-  description: " A VitePress Site",
+  title: "Element-plus",
+  description: "Element-plus 组件库",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
-
     sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      },
       {
         text: 'Button',
         items: [
@@ -57,7 +45,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/a-00l/element-ui' }
     ]
   }
 })
