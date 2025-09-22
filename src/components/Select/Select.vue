@@ -66,7 +66,7 @@
     type SelectProps,
     type StateSelect,
   } from './types'
-  import { findOption } from './method'
+  import { findOption, optionArray } from './method'
   defineOptions({
     name: 'MySelect',
   })
@@ -126,13 +126,14 @@
 
   const search = async (e: Event) => {
     if (!props.filterable) return
-    debugger
     const target = e.target as HTMLInputElement
     // 用来记录搜索框中的值
     searchValue.value = target.value
 
     // 未开启搜索功能
     if (searchValue.value.trim() === '') {
+      // 获取初始值
+      options.value.push(...optionArray)
       return
     }
 
@@ -162,8 +163,8 @@
     }
     // 默认搜索方法
     else {
-      // 清空原有的 options
       options.value = []
+      // 清空原有的 options
       const newOptions = findOption(searchValue.value)
       options.value.push(...newOptions)
     }
