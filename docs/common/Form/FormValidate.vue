@@ -56,7 +56,6 @@
       <my-button @click="reset">Cancel</my-button>
     </my-form-item>
   </my-form>
-  {{ form.desc }}
 </template>
 
 <script setup>
