@@ -39,7 +39,6 @@
     createMessage({
       showClose: true,
       message: 'This is a info message.',
-      duration: 0,
     })
   }
   const open2 = () => {
@@ -67,7 +66,6 @@
     createMessage({
       showClose: true,
       message: 'Oops, this is a message that does not automatically close.',
-      duration: 0,
     })
   }
   const open6 = () => {
