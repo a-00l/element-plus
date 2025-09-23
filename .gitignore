@@ -29,6 +29,5 @@ coverage
 
 *.tsbuildinfo
 
-docs
 src/packages
 element-review
