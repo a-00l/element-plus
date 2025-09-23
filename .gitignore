@@ -31,3 +31,4 @@ coverage
 
 src/packages
 element-review
+docs/.vitepress/cache
