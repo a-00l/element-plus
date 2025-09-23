@@ -13,9 +13,8 @@
 </template>
 
 <script setup>
-  import { createMessage } from '@/components/Message/method.ts'
+  import createMessage from '@/components/Message/method.ts'
   import { h } from 'vue'
-
   const open = () => {
     createMessage('This is a message.')
   }

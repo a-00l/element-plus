@@ -27,8 +27,7 @@
 </template>
 
 <script setup>
-  import { createMessage } from '@/components/Message/method.ts'
-
+  import createMessage from '@/components/Message/method.ts'
   const open1 = () => {
     createMessage('This is a info message.')
   }

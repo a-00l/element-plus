@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-  import { createMessage } from '@/components/Message/method.ts'
+  import createMessage from '@/components/Message/method.ts'
   const handleCommand = (command) => {
     createMessage({
       message: `click on item ${command}`,
