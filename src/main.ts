@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, onMounted } from 'vue'
 import App from './App.vue'
 import './styles/index.scss'
 
@@ -9,15 +9,19 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { createMessage } from './components/Message/method'
-
+import createMessage from './components/Message/method'
 library.add(fas, far, fab)
 
 export const app = createApp(App)
 
-// 挂载全局方法
-app.config.globalProperties.$message = (props: any) => createMessage(props, app._context)
+if (!import.meta.env.SSR) {
+  // 挂载全局方法
+  app.config.globalProperties.$message = (props: any) => createMessage(props, app._context)
+}
 
-app
-  .component('font-awesome-icon', FontAwesomeIcon)
-  .mount('#app')
+onMounted(() => {
+  app
+    .component('font-awesome-icon', FontAwesomeIcon)
+    .mount('#app')
+})
+

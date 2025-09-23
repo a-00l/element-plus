@@ -4,10 +4,12 @@ import Message from "./Message.vue";
 import { app } from "@/main";
 
 const messageArray: MessageArray[] = reactive([])
-
 let count = 0
 // 创建message
 const _createMessage = (props: CreateMessage, appContext?: any) => {
+  // 检查是否在浏览器环境中（非SSR）
+  if (import.meta.env.SSR) return { close: () => undefined }
+
   const id = `message_${count++}`
   const div = document.createElement('div')
 
@@ -78,6 +80,7 @@ export const deleteMessage = (id: string) => {
 
 export const addIndex = () => 1000 + count
 
+
 type MessageType = 'primary' | 'success' | 'warning' | 'error' | 'info'
 
 const createTypedMessage = (type: MessageType) => {
@@ -89,6 +92,8 @@ const createTypedMessage = (type: MessageType) => {
   }
 }
 
+
+const createMessage: CreateMessageFunc = _createMessage as CreateMessageFunc
 _createMessage.primary = createTypedMessage('primary')
 _createMessage.success = createTypedMessage('success')
 _createMessage.warning = createTypedMessage('warning')
@@ -105,4 +110,4 @@ interface CreateMessageFunc {
   info: (msg: string) => void
 }
 
-export const createMessage: CreateMessageFunc = _createMessage as CreateMessageFunc
+export default createMessage
