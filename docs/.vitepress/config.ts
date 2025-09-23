@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 import { fileURLToPath, URL } from 'node:url'
+import requireTransform from "vite-plugin-require-transform";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,11 +11,16 @@ export default defineConfig({
         map: true
       }
     },
+    plugins: [
+      requireTransform({
+        fileRegex: /.js$|.vue$|.ts$/,
+      }),
+    ],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('../../src', import.meta.url)),
-      },
-    },
+        '@': fileURLToPath(new URL('../../src', import.meta.url))
+      }
+    }
   },
   markdown: {
     config(md) {
