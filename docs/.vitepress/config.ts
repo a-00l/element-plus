@@ -53,5 +53,5 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/a-00l/element-ui' }
     ]
   },
-  base: '/element-plus/',
+  base: '/',
 })
