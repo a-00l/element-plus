@@ -31,6 +31,9 @@ export default defineConfig({
   title: "Element-plus",
   description: "Element-plus 组件库",
   themeConfig: {
+    nav: [
+      { text: '组件', link: '/components/Button' },
+    ],
     // https://vitepress.dev/reference/default-theme-config
     sidebar: [
       {
@@ -50,7 +53,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/a-00l/element-ui' }
+      { icon: 'github', link: 'https://github.com/a-00l/element-plus/' }
     ]
   },
   base: '/element-plus/',
