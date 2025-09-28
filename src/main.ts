@@ -13,15 +13,9 @@ import createMessage from './components/Message/method'
 library.add(fas, far, fab)
 
 export const app = createApp(App)
-
-if (!import.meta.env.SSR) {
-  // 挂载全局方法
-  app.config.globalProperties.$message = (props: any) => createMessage(props, app._context)
-}
+app.component('font-awesome-icon', FontAwesomeIcon)
 
 onMounted(() => {
-  app
-    .component('font-awesome-icon', FontAwesomeIcon)
-    .mount('#app')
+  app.config.globalProperties.$message = (props: any) => createMessage(props, app._context)
+  app.mount('#app')
 })
-
