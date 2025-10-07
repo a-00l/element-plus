@@ -27,6 +27,17 @@
       >
         <Icon icon="xmark"></Icon>
       </div>
+      <div
+        class="my-badge my-message__badge"
+        v-if="grouping && sameTypeCount > 1"
+      >
+        <sup
+          class="my-badge__content"
+          :class="`my-badge__content--${type}`"
+        >
+          {{ sameTypeCount }}
+        </sup>
+      </div>
     </div>
   </Transition>
 </template>
@@ -36,7 +47,7 @@
   import type { MessageProps } from './types'
   import Icon from '../Icon/Icon.vue'
   import { computed, onMounted, ref, watch } from 'vue'
-  import { deleteMessage, getBottomOffset } from './method'
+  import { deleteMessage, getBottomOffset, getSameTypeCount } from './method'
   defineOptions({
     name: 'MyMessage',
   })
@@ -46,6 +57,7 @@
     showClose: false,
     duration: 3000,
     offset: 16,
+    grouping: false,
   })
 
   const visible = ref(false)
@@ -59,6 +71,17 @@
   // 计算当前message的位置
   const topOffset = computed(() => lastOffset.value + props.offset)
   const bottomOffset = computed(() => topOffset.value + height.value)
+
+  // 计算当前类型的message数量
+  const sameTypeCount = computed(() => {
+    if (props.grouping && timer) {
+      // 清除之前的定时器，开启新的定时器
+      clearTimeout(timer)
+      destroy()
+    }
+
+    return props.grouping ? getSameTypeCount(props.type) : 1
+  })
 
   const cssStyle = computed(() => {
     return {

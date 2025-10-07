@@ -47,6 +47,12 @@
     color: #a8abb2;
   }
 
+  .my-message__badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+  }
+
   .my-message__close svg {
     cursor: pointer;
   }
@@ -62,6 +68,32 @@
   }
 }
 
+.my-badge {
+  --my-badge-bg-color: var(--my-color-danger);
+  --my-badge-radius: 10px;
+  --my-badge-font-size: 12px;
+  --my-badge-padding: 6px;
+  --my-badge-size: 18px;
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  width: fit-content;
+}
+
+.my-badge__content {
+  background-color: var(--my-badge-bg-color);
+  border-radius: var(--my-badge-radius);
+  color: var(--my-color-white);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--my-badge-font-size);
+  height: var(--my-badge-size);
+  padding: 0 var(--my-badge-padding);
+  white-space: nowrap;
+  border: 1px solid var(--my-bg-color-overlay);
+}
+
 @each $val in info, success, warning, primary, error {
   .my-message--#{$val} {
     --my-message-bg-color: var(--my-color-#{$val}-light-9);
@@ -74,5 +106,9 @@
     .my-message__content {
       color: var(--my-message-text-color);
     }
+  }
+
+  .my-badge__content--#{$val} {
+    background-color: var(--my-color-#{$val});
   }
 }

@@ -9,6 +9,15 @@ let count = 0
 const _createMessage = (props: CreateMessage, appContext?: any) => {
   // 检查是否在浏览器环境中（非SSR）
   if (import.meta.env.SSR) return { close: () => undefined }
+  // 有相同消息，且分组显示，则直接返回关闭函数
+  if (props.grouping) {
+    const index = messageArray.findIndex(item => item.type === props.type)
+
+    if (index !== -1) {
+      messageArray[index].sameTypeCount++
+      return { close: () => undefined }
+    }
+  }
 
   const id = `message_${count++}`
   const div = document.createElement('div')
@@ -49,6 +58,8 @@ const _createMessage = (props: CreateMessage, appContext?: any) => {
   const instance = {
     props: newProps,
     id,
+    type: props.type || 'info',
+    sameTypeCount: 1,
     vm: VNode.component!
   }
 
@@ -60,6 +71,11 @@ const _createMessage = (props: CreateMessage, appContext?: any) => {
       onDestroy(id)
     }
   }
+}
+export const getSameTypeCount = (type: MessageType = 'info') => {
+  const index = messageArray.findIndex(item => item.type === type)
+
+  return index === -1 ? 0 : messageArray[index].sameTypeCount
 }
 
 export const getBottomOffset = (id: string) => {

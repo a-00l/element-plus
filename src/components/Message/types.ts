@@ -1,9 +1,9 @@
 import type { ComponentInternalInstance, VNode } from "vue"
-
+type MessageType = 'primary' | 'success' | 'warning' | 'error' | 'info'
 export interface MessageProps {
   message: string | VNode;
   id: string;
-  type?: 'primary' | 'success' | 'warning' | 'info' | 'error';
+  type?: MessageType;
   showClose?: boolean;
   duration?: number;
   close?: () => void
@@ -11,12 +11,15 @@ export interface MessageProps {
   destroy: (id: string) => void;
   zIndex?: number;
   plain?: boolean;
+  grouping?: boolean;
 }
 
 export interface MessageArray {
   id: string;
   props: MessageProps;
   vm: ComponentInternalInstance;
+  type: MessageType;
+  sameTypeCount: number;
 }
 
 type filter = 'id' | 'destroy' | 'zIndex'
