@@ -34,6 +34,13 @@ Message 可以接收一个字符串，它会被显示为正文内容。
 
 <preview path="../common/Message/MessageClose.vue"></preview>
 
+## 分组消息合并
+
+合并相同内容的消息。
+
+设置 `grouping` 为 true，内容相同的 `message` 将被合并。
+<preview path="../common/Message/MessageGroup.vue"></preview>
+
 ## 全局方法
 
 Element Plus 为 `app.config.globalProperties` 添加了全局方法 `$message`。 因此在 vue 实例中你可以使用当前页面中的调用方式调用 `Message`
