@@ -18,7 +18,6 @@ export interface MessageArray {
   id: string;
   props: MessageProps;
   vm: ComponentInternalInstance;
-  type: MessageType;
   sameTypeCount: number;
 }
 
