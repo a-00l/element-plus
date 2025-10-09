@@ -28,6 +28,10 @@ coverage
 
 *.tsbuildinfo
 
+dist
 src/packages
 element-review
 docs/.vitepress/cache
+
+auto-imports.d.ts
+components.d.ts
