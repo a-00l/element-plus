@@ -1,3 +1,7 @@
+@import url('../Tooltip/style.scss');
+@import url('../Icon/style.scss');
+@import url('../Input/style.scss');
+
 .my-select {
   --my-select-item-hover-bg-color: var(--my-fill-color-light);
   --my-select-item-font-size: var(--my-font-size-base);
